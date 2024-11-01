@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+    const groups = (window.location.hash || window.location.pathname).match(/\/markets\/(?<chainId>\d*)\/(?<marketId>0x[0-9a-fA-F]{40})/).groups
+    if (typeof groups !== 'undefined') {
+        window.location.href = `https://app.seer.pm/markets/${groups.chainId}/${groups.marketId}`;
+    }
+});
 const closeBtn = document.querySelector('.btn-close')
 const announcement = document.querySelector('.announcement')
 function hideAnnouncement() {
