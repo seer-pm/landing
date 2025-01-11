@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    const groups = (window.location.hash || window.location.pathname).match(/\/markets\/(?<chainId>\d*)\/(?<marketId>0x[0-9a-fA-F]{40})/).groups
+    const groups = (window.location.hash || window.location.pathname).match(/\/markets\/(?<chainId>\d*)\/(?<marketId>0x[0-9a-fA-F]{40})/)?.groups
     if (typeof groups !== 'undefined') {
         window.location.href = `https://app.seer.pm/markets/${groups.chainId}/${groups.marketId}`;
     }
@@ -12,16 +12,16 @@ function hideAnnouncement() {
 closeBtn.addEventListener('click', hideAnnouncement)
 const texts = [
     {
-        title: '“Seer, Who will win the 2024 U.S. Presidential Election?”',
-        subtitle: 'According to the Markets, Donald Trump has a 63.5% chance of winning.'
+        title: '“Seer, will Donald Trump pardon or commute the sentence of Ross Ulbricht during his first month in office?”',
+        subtitle: 'Prediction markets estimate a 70.2% chance that Donald Trump will pardon Ross Ulbricht.'
     },
     {
-        title: '“Seer, The price of Bitcoin at the start of 2025? [USD]”',
-        subtitle: 'Market estimate: 60,000'
+        title: '"Seer, will Alice Weidel become the next Chancellor of Germany after the February 2025 election?"',
+        subtitle: 'Prediction markets estimate a 95.1% chance that Alice Weidel will not become Chancellor.'
     },
     {
-        title: '“Seer, How many popular votes will [candidate] receive in the 2024 U.S. Presidential election?”',
-        subtitle: '#1 Kamala Harris: 49.6%, #2 Donald Trump: 48.4%'
+        title: '“Seer, how many people will be deported (removals, returns & expulsions) from the United States during 2025? [Individuals]”',
+        subtitle: 'Market Estimate: 1,200,000 Individuals'
     }
 ];
 
@@ -51,6 +51,5 @@ function updateText() {
 }
 
 // Start initial cycle after first interval
-setTimeout(() => {
-    setInterval(updateText, 4000); // 4 seconds per text (3s display + 1s transition)
-}, 4000);
+updateText();
+setInterval(updateText, 4000); // 4 seconds per text (3s display + 1s transition)

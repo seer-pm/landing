@@ -218,7 +218,6 @@ body {
 .text-container {
   transition: opacity 0.5s ease-in-out;
   opacity: 0;
-  position: absolute;
 }
 .text-container.active {
   opacity: 1;
