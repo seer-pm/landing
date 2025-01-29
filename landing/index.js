@@ -12,17 +12,21 @@ function hideAnnouncement() {
 closeBtn.addEventListener('click', hideAnnouncement)
 const texts = [
     {
-        title: '“Seer, will Donald Trump pardon or commute the sentence of Ross Ulbricht during his first month in office?”',
-        subtitle: 'Prediction markets estimate a 70.2% chance that Donald Trump will pardon Ross Ulbricht.'
+        title: '"Seer, will Alice Weidel become the next Chancellor of Germany after the February 2025 election?"',
+        subtitle: 'Prediction markets estimate a 97.6% chance that Alice Weidel will not become Chancellor.'
     },
     {
-        title: '"Seer, will Alice Weidel become the next Chancellor of Germany after the February 2025 election?"',
-        subtitle: 'Prediction markets estimate a 95.1% chance that Alice Weidel will not become Chancellor.'
+        title: '“Seer, who will win or advance to the next round in the re-run of Round 1 of the 2024 Romanian Presidential election?”',
+        subtitle: 'Prediction markets estimate a 25.4% chance that Călin Georgescu will win or addvance to the next round.'
     },
     {
         title: '“Seer, how many people will be deported (removals, returns & expulsions) from the United States during 2025? [Individuals]”',
-        subtitle: 'Market Estimate: 1,200,000 Individuals'
-    }
+        subtitle: 'Market Estimate: 1,196,000 Individuals'
+    },
+    {
+        title: '“Seer, how many seats in the Bundestag will the [party] win in the upcoming German snap elections?”',
+        subtitle: 'Prediction markets estimate that CDU/CSU will win 33.1% of the seats.'
+    },
 ];
 
 const container = document.getElementById('textContainer');
