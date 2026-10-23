@@ -10,7 +10,6 @@
   --measure: 1280px;
   --section-block: clamp(72px, 10vw, 144px);
 
-  --text-display: clamp(2.75rem, 1.5rem + 4.4vw, 5.25rem);
   --text-h2: clamp(2rem, 1.35rem + 2.4vw, 3.5rem);
   --text-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
   --text-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
