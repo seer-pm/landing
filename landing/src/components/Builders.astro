@@ -1,0 +1,106 @@
+---
+const items = [
+  {
+    title: "TypeScript SDK",
+    code: "npm install @seer-pm/sdk",
+    detail: "Read markets and prices, then quote and execute trades from your own code or agent.",
+    href: "https://www.npmjs.com/package/@seer-pm/sdk",
+    link: "@seer-pm/sdk on npm",
+  },
+  {
+    title: "Risk Pricing API",
+    code: "GET risk.seer.pm/api/v1/risk-pricing",
+    detail: "Current default estimates and their history as JSON, open to any origin.",
+    href: "https://risk.seer.pm/api/v1/risk-pricing",
+    link: "Try the endpoint",
+  },
+  {
+    title: "Documentation",
+    code: "docs.seer.pm",
+    detail: "How markets are created, traded and resolved, and how the contracts fit together.",
+    href: "https://docs.seer.pm",
+    link: "Read the docs",
+  },
+];
+---
+
+<section class="section builders" aria-labelledby="builders-title">
+  <div class="container builders-grid">
+    <div>
+      <h2 id="builders-title" class="h2">Readable by agents, too.</h2>
+      <p class="lead builders-lead">
+        Market prices are open data. Pull them into your own tools, or let an agent trade on what it knows.
+      </p>
+    </div>
+    <ul class="builder-list">
+      {
+        items.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <code>{item.code}</code>
+            <p>{item.detail}</p>
+            <a class="text-link" href={item.href}>
+              {item.link}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .builders {
+    background: var(--seer-page);
+    color: var(--seer-text);
+  }
+  .builders-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(40px, 6vw, 96px);
+  }
+  h2 {
+    max-width: 11ch;
+  }
+  .builders-lead {
+    margin-top: 24px;
+    max-width: 40ch;
+    color: var(--seer-muted);
+  }
+  .builder-list {
+    padding: 0;
+    list-style: none;
+  }
+  .builder-list li {
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+    padding-block: 24px;
+    border-top: 1px solid var(--seer-border);
+  }
+  .builder-list li:last-child {
+    border-bottom: 1px solid var(--seer-border);
+  }
+  h3 {
+    font-size: var(--text-h3);
+    letter-spacing: -0.01em;
+  }
+  code {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: var(--seer-radius-sm);
+    background: var(--seer-accent-soft);
+    color: var(--seer-accent-text);
+    overflow-wrap: anywhere;
+  }
+  p {
+    max-width: 56ch;
+    color: var(--seer-muted);
+  }
+  @media (max-width: 900px) {
+    .builders-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

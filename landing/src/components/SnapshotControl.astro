@@ -1,0 +1,90 @@
+---
+interface Props {
+  /** Must match the BeliefHills id it drives. */
+  id: string;
+  labels: string[];
+}
+
+const { id, labels } = Astro.props;
+---
+
+{
+  labels.length > 1 && (
+    <fieldset class="snapshot-control">
+      <legend>The market's view</legend>
+      <div class="snapshot-options">
+        {labels.map((label, index) => (
+          <label>
+            <input type="radio" name={`${id}-snapshot`} value={index} checked={index === 0} />
+            <span>{label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )
+}
+
+<style>
+  .snapshot-control {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  legend {
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--seer-on-ink-muted);
+  }
+  .snapshot-options {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-self: start;
+    gap: 4px;
+    padding: 4px;
+    border-radius: var(--seer-radius-full);
+    background: rgb(255 255 255 / 0.06);
+  }
+  label {
+    position: relative;
+  }
+  input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  span {
+    display: block;
+    padding: 8px 14px;
+    border-radius: var(--seer-radius-full);
+    font-size: 14px;
+    color: var(--seer-on-ink-muted);
+    transition:
+      background-color var(--seer-duration-fast) var(--seer-ease-out),
+      color var(--seer-duration-fast) var(--seer-ease-out);
+  }
+  label:hover span {
+    color: var(--seer-on-ink);
+  }
+  input:checked + span {
+    background: var(--seer-brand-lavender);
+    color: var(--seer-brand-ink);
+    font-weight: 600;
+  }
+  input:focus-visible + span {
+    outline: 2px solid var(--seer-brand-lavender);
+    outline-offset: 2px;
+  }
+  @media (max-width: 400px) {
+    span {
+      padding: 7px 10px;
+      font-size: 13px;
+    }
+  }
+</style>

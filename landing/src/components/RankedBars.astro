@@ -1,0 +1,86 @@
+---
+import { percent } from "../lib/format.mjs";
+
+interface Props {
+  items: { name: string; probability: number }[];
+  /** What the numbers are, read before the list by assistive technology. */
+  label: string;
+}
+
+const { items, label } = Astro.props;
+// Bars share one axis scaled to the largest value; every bar also carries its exact number.
+const max = Math.max(...items.map((item) => item.probability), 0.0001);
+---
+
+<ol class="bars" aria-label={label}>
+  {
+    items.map((item) => (
+      <li>
+        <span class="bar-name">{item.name}</span>
+        <span class="bar-track" aria-hidden="true">
+          <span class="bar-fill" style={`--share: ${(item.probability / max) * 100}%`} />
+        </span>
+        <span class="bar-value numeric">{percent(item.probability)}</span>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .bars {
+    display: grid;
+    gap: 2px;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 4.5rem;
+    align-items: center;
+    gap: 16px;
+    min-height: 36px;
+  }
+  .bar-name {
+    font-size: 14px;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bar-track {
+    display: block;
+    height: 6px;
+    border-radius: var(--seer-radius-full);
+    background: var(--seer-surface-raised);
+  }
+  .bar-fill {
+    display: block;
+    width: var(--share);
+    min-width: 6px;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--seer-brand-purple);
+  }
+  .bar-value {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+  }
+  @media (max-width: 520px) {
+    li {
+      grid-template-columns: minmax(0, 1fr) 4rem;
+      grid-template-areas: "name value" "track track";
+      gap: 4px 12px;
+      padding-block: 6px;
+    }
+    .bar-name {
+      grid-area: name;
+    }
+    .bar-value {
+      grid-area: value;
+    }
+    .bar-track {
+      grid-area: track;
+    }
+  }
+</style>

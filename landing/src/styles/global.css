@@ -1,0 +1,168 @@
+@import "@seer-pm/ui-kit/fonts.css";
+@import "@seer-pm/ui-kit/tokens.css";
+@import "@seer-pm/ui-kit/base.css";
+@import "@seer-pm/ui-kit/components.css";
+
+/* Landing layout and type. Colour, radius and font come from the kit; this file only sets the
+   page's own scale and the ink and purple fields the brand posters are built from. */
+:root {
+  --gutter: clamp(16px, 4vw, 40px);
+  --measure: 1280px;
+  --section-block: clamp(72px, 10vw, 144px);
+
+  --text-display: clamp(2.75rem, 1.5rem + 4.4vw, 5.25rem);
+  --text-h2: clamp(2rem, 1.35rem + 2.4vw, 3.5rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+
+  /* Older belief snapshots sink toward the ink ground, as the stacked curves do on the posters. */
+  --hill-0: var(--seer-brand-purple-on-ink);
+  --hill-1: #6a35cf;
+  --hill-2: #50289c;
+  --hill-3: #3b1e70;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+figure,
+ol,
+ul {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--measure) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Ink and purple fields keep their colour in both themes; data-theme="dark" on an ink field gives
+   its controls the kit's dark tokens. */
+.field-ink {
+  background: var(--seer-brand-ink);
+  color: var(--seer-on-ink);
+}
+.field-purple {
+  background: var(--seer-brand-purple);
+  color: var(--seer-brand-white);
+}
+
+.section {
+  padding-block: var(--section-block);
+}
+
+.h2 {
+  font-size: var(--text-h2);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--seer-accent-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: text-decoration-color var(--seer-duration-fast) var(--seer-ease-out);
+}
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+.text-link svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: var(--seer-radius-sm);
+  background: var(--seer-surface);
+  color: var(--seer-text);
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

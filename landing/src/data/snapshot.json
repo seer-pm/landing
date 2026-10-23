@@ -1,0 +1,635 @@
+{
+  "generatedAt": 1792721671,
+  "openMarkets": 2137,
+  "hero": {
+    "question": "Which party or joint electoral list will win the most seats in Israeli Knesset election in 2026?",
+    "url": "https://app.seer.pm/markets/100/0x31cb54c49479243333594eb7343d31f6bd1ddfd3",
+    "chainId": 100,
+    "creator": "0xb5a6a9c6d779e7dd7815f94ae2ccfb153a21801c",
+    "liquidityUSD": 27584.34681100843,
+    "outcomes": [
+      "Yashar",
+      "Likud",
+      "Together Alliance",
+      "Others"
+    ],
+    "snapshots": [
+      {
+        "label": "Now",
+        "daysAgo": 0,
+        "probabilities": [
+          0.66,
+          0.322,
+          0.005,
+          0.006999999999999999
+        ]
+      },
+      {
+        "label": "7 days ago",
+        "daysAgo": 7,
+        "probabilities": [
+          0.5969,
+          0.3923,
+          0.005,
+          0.0093
+        ]
+      },
+      {
+        "label": "30 days ago",
+        "daysAgo": 30,
+        "probabilities": [
+          0.5957,
+          0.3908,
+          0.005,
+          0.0098
+        ]
+      },
+      {
+        "label": "90 days ago",
+        "daysAgo": 90,
+        "probabilities": [
+          0.33,
+          0.6400060263585258,
+          0.02,
+          0.01
+        ]
+      }
+    ]
+  },
+  "ledger": [
+    {
+      "question": "Will the National Rally’s candidate win the next French presidential election?",
+      "url": "https://app.seer.pm/markets/100/0xbbf8f7e40a9234d965f59802c1b3720b21bcc32e",
+      "leading": {
+        "name": "Yes",
+        "probability": 0.377
+      }
+    },
+    {
+      "question": "Will Polymarket publicly release a fix for the negative-risk mint/merge share cost basis accounting issue before January 1, 2027?",
+      "url": "https://app.seer.pm/markets/100/0xfe8abb3b55acca31e74243349573801c379507b3",
+      "leading": {
+        "name": "Yes",
+        "probability": 0.401
+      }
+    },
+    {
+      "question": "Will the Digital Asset Market Clarity Act be approved by the U.S. Senate, excluding committee approval, in 2026?",
+      "url": "https://app.seer.pm/markets/100/0xe820d073f8885f4a24328ba9fbb8a745114bb647",
+      "leading": {
+        "name": "Yes",
+        "probability": 0.33399999999999996
+      }
+    },
+    {
+      "question": "Will Donald Trump issue an official presidential pardon for Ghislaine Maxwell by December 31st  2026?",
+      "url": "https://app.seer.pm/markets/100/0x0a2e852ade1b60ceae19e2d9a6f0a97da2d0dc06",
+      "leading": {
+        "name": "Yes",
+        "probability": 0.06
+      }
+    }
+  ],
+  "manyOutcomes": {
+    "question": "What name will be adopted for the futarchy-run AI job board organization announced by Seer on 25 September 2026?",
+    "url": "https://app.seer.pm/markets/100/0x8b3c7f3f09f6a85353926d8ee0f12decc1c9a5e8",
+    "outcomes": [
+      {
+        "name": "delegateyourjob.ai",
+        "probability": 0.065
+      },
+      {
+        "name": "Zetsu.AI",
+        "probability": 0.05
+      },
+      {
+        "name": "Workmesh",
+        "probability": 0.043
+      },
+      {
+        "name": "Foreguild",
+        "probability": 0.039
+      },
+      {
+        "name": "Seek",
+        "probability": 0.027999999999999997
+      },
+      {
+        "name": "Auspex",
+        "probability": 0.024
+      },
+      {
+        "name": "AgenticGigs",
+        "probability": 0.022000000000000002
+      },
+      {
+        "name": "Vantage",
+        "probability": 0.022000000000000002
+      },
+      {
+        "name": "Agentarchy",
+        "probability": 0.02
+      },
+      {
+        "name": "Agora",
+        "probability": 0.02
+      },
+      {
+        "name": "Taskweave",
+        "probability": 0.015
+      },
+      {
+        "name": "Horizance",
+        "probability": 0.013999999999999999
+      },
+      {
+        "name": "Agentlier",
+        "probability": 0.013999999999999999
+      },
+      {
+        "name": "Symbiont",
+        "probability": 0.013000000000000001
+      },
+      {
+        "name": "Synergent",
+        "probability": 0.013000000000000001
+      },
+      {
+        "name": "Worklume",
+        "probability": 0.013000000000000001
+      },
+      {
+        "name": "TaskaskAI",
+        "probability": 0.012
+      },
+      {
+        "name": "Fleet",
+        "probability": 0.012
+      },
+      {
+        "name": "ForeSeer",
+        "probability": 0.011000000000000001
+      },
+      {
+        "name": "Mintellect",
+        "probability": 0.011000000000000001
+      },
+      {
+        "name": "AgentVerSeer",
+        "probability": 0.009000000000000001
+      },
+      {
+        "name": "Agenticjobs",
+        "probability": 0.008
+      },
+      {
+        "name": "Aigenseer",
+        "probability": 0.008
+      },
+      {
+        "name": "Workhere Agent",
+        "probability": 0.006999999999999999
+      },
+      {
+        "name": "quest-board",
+        "probability": 0.006999999999999999
+      },
+      {
+        "name": "BountyMesh",
+        "probability": 0.006999999999999999
+      },
+      {
+        "name": "Agentra",
+        "probability": 0.006999999999999999
+      },
+      {
+        "name": "Task-GPT",
+        "probability": 0.006999999999999999
+      },
+      {
+        "name": "delegatobs.ai",
+        "probability": 0.006
+      },
+      {
+        "name": "TaskpayAI",
+        "probability": 0.005
+      },
+      {
+        "name": "Co-Exist",
+        "probability": 0.005
+      },
+      {
+        "name": "SwarmBounty",
+        "probability": 0.005
+      },
+      {
+        "name": "Seer Knows",
+        "probability": 0.005
+      },
+      {
+        "name": "WorkLoop",
+        "probability": 0.005
+      },
+      {
+        "name": "Jobhere Agent",
+        "probability": 0.004
+      },
+      {
+        "name": "Piecework",
+        "probability": 0.004
+      },
+      {
+        "name": "Synerget",
+        "probability": 0.004
+      },
+      {
+        "name": "TASKARCHY",
+        "probability": 0.004
+      },
+      {
+        "name": "0xwork",
+        "probability": 0.004
+      },
+      {
+        "name": "Taskora",
+        "probability": 0.004
+      },
+      {
+        "name": "Cryptoagents",
+        "probability": 0.004
+      },
+      {
+        "name": "borgcorp",
+        "probability": 0.004
+      },
+      {
+        "name": "Gigarchy",
+        "probability": 0.004
+      },
+      {
+        "name": "Taskseer",
+        "probability": 0.004
+      },
+      {
+        "name": "Futask",
+        "probability": 0.004
+      },
+      {
+        "name": "Laboracle",
+        "probability": 0.004
+      },
+      {
+        "name": "TaskNet",
+        "probability": 0.004
+      },
+      {
+        "name": "KORRA",
+        "probability": 0.004
+      },
+      {
+        "name": "Hive",
+        "probability": 0.004
+      },
+      {
+        "name": "Errand",
+        "probability": 0.004
+      },
+      {
+        "name": "Drexseer",
+        "probability": 0.004
+      },
+      {
+        "name": "SEERAAI",
+        "probability": 0.004
+      },
+      {
+        "name": "SEERA",
+        "probability": 0.004
+      },
+      {
+        "name": "SeerAgentFi",
+        "probability": 0.004
+      },
+      {
+        "name": "NEMESIS",
+        "probability": 0.004
+      },
+      {
+        "name": "Zethro",
+        "probability": 0.004
+      },
+      {
+        "name": "OracleBoard",
+        "probability": 0.004
+      },
+      {
+        "name": "PRONOA",
+        "probability": 0.004
+      },
+      {
+        "name": "AEVUM",
+        "probability": 0.004
+      },
+      {
+        "name": "synthlabor",
+        "probability": 0.004
+      },
+      {
+        "name": "TaskMesh",
+        "probability": 0.003
+      },
+      {
+        "name": "Predfupay",
+        "probability": 0.003
+      },
+      {
+        "name": "Seervant",
+        "probability": 0.003
+      },
+      {
+        "name": "Taskorama",
+        "probability": 0.003
+      },
+      {
+        "name": "Praxis",
+        "probability": 0.003
+      },
+      {
+        "name": "agentbounty",
+        "probability": 0.003
+      },
+      {
+        "name": "Aetherwork",
+        "probability": 0.003
+      },
+      {
+        "name": "TaskIT",
+        "probability": 0.003
+      },
+      {
+        "name": "AgentGemini",
+        "probability": 0.003
+      },
+      {
+        "name": "AgentSeerX",
+        "probability": 0.003
+      },
+      {
+        "name": "Aether",
+        "probability": 0.003
+      },
+      {
+        "name": "AgentFutarchy",
+        "probability": 0.003
+      },
+      {
+        "name": "AIora",
+        "probability": 0.003
+      },
+      {
+        "name": "AgentSent",
+        "probability": 0.003
+      },
+      {
+        "name": "PHRONEX",
+        "probability": 0.003
+      },
+      {
+        "name": "Skynet",
+        "probability": 0.003
+      },
+      {
+        "name": "Seerchy",
+        "probability": 0.003
+      },
+      {
+        "name": "Seerarchy",
+        "probability": 0.003
+      }
+    ]
+  },
+  "selection": {
+    "question": "Which property will be selected for evaluation as part of the 'RealT Prediction Experiment'?",
+    "url": "https://app.seer.pm/markets/100/0x9446c7cd29be9b0f5b7f05bfdc8a81cf83341a17",
+    "outcomes": [
+      {
+        "name": "14631-14633 Plymouth",
+        "probability": 0.24
+      },
+      {
+        "name": "23750 W 7 Mile",
+        "probability": 0.21
+      },
+      {
+        "name": "9518 Franklin",
+        "probability": 0.13
+      },
+      {
+        "name": "18881 Mound",
+        "probability": 0.1
+      },
+      {
+        "name": "8034 Faith",
+        "probability": 0.09
+      },
+      {
+        "name": "1769 Cheryl",
+        "probability": 0.08
+      },
+      {
+        "name": "16728-16730 Woodingham",
+        "probability": 0.06
+      },
+      {
+        "name": "9311 Bedford",
+        "probability": 0.05
+      },
+      {
+        "name": "11373 Prest",
+        "probability": 0.04
+      }
+    ]
+  },
+  "risk": {
+    "updatedAt": 1787264050,
+    "assets": [
+      {
+        "name": "USDF",
+        "probability": 0.15803106237100317
+      },
+      {
+        "name": "avETH",
+        "probability": 0.1257723081530946
+      },
+      {
+        "name": "avUSD",
+        "probability": 0.09709395414130362
+      },
+      {
+        "name": "NUSD",
+        "probability": 0.07115335418679047
+      },
+      {
+        "name": "RUSD",
+        "probability": 0.055089677778171975
+      },
+      {
+        "name": "iUSD",
+        "probability": 0.030231330532589973
+      },
+      {
+        "name": "satUSD+",
+        "probability": 0.024317384859555702
+      },
+      {
+        "name": "U",
+        "probability": 0.023308180263347023
+      },
+      {
+        "name": "solvBTC",
+        "probability": 0.02273926902031076
+      },
+      {
+        "name": "USDO",
+        "probability": 0.020724484552347988
+      },
+      {
+        "name": "UBTC",
+        "probability": 0.020090305877700776
+      },
+      {
+        "name": "mF-ONE",
+        "probability": 0.01920529390248138
+      },
+      {
+        "name": "BTCB",
+        "probability": 0.007676894967543646
+      },
+      {
+        "name": "GACLO-1",
+        "probability": 0.007676894967543646
+      },
+      {
+        "name": "bsdETH",
+        "probability": 0.006205647989269147
+      },
+      {
+        "name": "USDS",
+        "probability": 0.004798359018751697
+      },
+      {
+        "name": "LBTC",
+        "probability": 0.004770200351212783
+      },
+      {
+        "name": "ETH+",
+        "probability": 0.004605136295387502
+      },
+      {
+        "name": "USDT",
+        "probability": 0.004030397693791876
+      },
+      {
+        "name": "JAAA",
+        "probability": 0.003252301569270033
+      },
+      {
+        "name": "pufETH",
+        "probability": 0.0029447409343535957
+      },
+      {
+        "name": "USD1",
+        "probability": 0.0027585817056154927
+      },
+      {
+        "name": "tBTC",
+        "probability": 0.0026458035761957044
+      },
+      {
+        "name": "STAC",
+        "probability": 0.0025139191411114314
+      },
+      {
+        "name": "rETH",
+        "probability": 0.0023660442757403866
+      },
+      {
+        "name": "JTRSY",
+        "probability": 0.0021315325824606823
+      },
+      {
+        "name": "BUIDL-I",
+        "probability": 0.001663936099921104
+      },
+      {
+        "name": "weETH",
+        "probability": 0.0009108200305935066
+      },
+      {
+        "name": "stETH",
+        "probability": 0.0007855741830077312
+      },
+      {
+        "name": "PYUSD",
+        "probability": 0.0006264100649758797
+      },
+      {
+        "name": "RLUSD",
+        "probability": 0.0004931844710572841
+      },
+      {
+        "name": "USDC",
+        "probability": 0.00037002063230440196
+      },
+      {
+        "name": "cbBTC",
+        "probability": 0.0003509946028882327
+      }
+    ],
+    "noDefault": 0.46519598216646624
+  },
+  "proposals": [
+    {
+      "dao": "GnosisDAO",
+      "code": "GIP-153",
+      "title": "transition Gnosis Chain into the Ethereum Economic Zone",
+      "url": "https://app.seer.pm/markets/100/0x1d1f3b43f3c61b815041e9092b1ba7ca37c63262",
+      "opensAt": 1788739200
+    },
+    {
+      "dao": "GnosisDAO",
+      "code": "GIP-152",
+      "title": "spin out the Gnosis App into an independent company",
+      "url": "https://app.seer.pm/markets/100/0xee8878d0a7136c5cd109554f06bb780e225badef",
+      "opensAt": 1786546800
+    },
+    {
+      "dao": "Kleros DAO",
+      "code": "KIP-90",
+      "title": "Cooperative Spending Disclosure",
+      "url": "https://app.seer.pm/markets/100/0x84412fe9d088c1d8dd676a7be9a3d5d0291ab1cf",
+      "opensAt": 1783086060
+    },
+    {
+      "dao": "GnosisDAO",
+      "code": "GIP-151",
+      "title": "one-time pro-rata treasury redemption",
+      "url": "https://app.seer.pm/markets/100/0xece80208cb8376be311ce0f5ea4ef73850a0dcf0",
+      "opensAt": 1782486884
+    },
+    {
+      "dao": "Kleros DAO",
+      "code": "KIP-88",
+      "title": "DAO Guidance to the Cooperative",
+      "url": "https://app.seer.pm/markets/100/0x0cae5e6f520e52e3d6a93c856bb6dbf7781f2e31",
+      "opensAt": 1780660800
+    },
+    {
+      "dao": "GnosisDAO",
+      "code": "GIP-150",
+      "title": "pro-rata treasury redemption",
+      "url": "https://app.seer.pm/markets/100/0x1a0f209fa9730a4668ce43ce18982cb0010a972a",
+      "opensAt": 1778434491
+    }
+  ]
+}

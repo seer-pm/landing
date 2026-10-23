@@ -1,0 +1,106 @@
+---
+import { convergencePaths } from "@seer-pm/ui-kit";
+
+// Wide on the left, meeting at one point past the right edge: many positions, one price.
+const wedges = convergencePaths({ start: 20, pitch: 140, wedge: 70, focus: [1500, 480] });
+
+const facts = [
+  ["Market types", "Categorical, multi-categorical, scalar, multi-scalar and conditional."],
+  ["Outcome tokens", "Conditional Tokens (ERC1155), wrapped as ERC20 so any DeFi protocol can hold them."],
+  ["Resolution", "Reality.eth answers each question, and Kleros arbitrates when an answer is disputed."],
+  ["Networks", "Gnosis, Ethereum, Optimism and Base."],
+];
+---
+
+<section class="section field-purple protocol" aria-labelledby="protocol-title">
+  <svg class="protocol-wedges" viewBox="0 0 1400 980" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    {wedges.map((d) => <path d={d} />)}
+  </svg>
+  <div class="container protocol-grid">
+    <div>
+      <h2 id="protocol-title" class="h2">One protocol underneath.</h2>
+      <p class="lead protocol-lead">
+        Every app on this page creates and trades markets on the same open contracts. Many positions go in; one price per
+        answer comes out.
+      </p>
+    </div>
+    <dl class="facts">
+      {
+        facts.map(([term, detail]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{detail}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .protocol {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .protocol-wedges {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(70%, 980px);
+    height: 100%;
+    fill: var(--seer-brand-ink);
+    opacity: 0.9;
+    z-index: -1;
+  }
+  .protocol-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  h2 {
+    max-width: 11ch;
+  }
+  .protocol-lead {
+    max-width: 40ch;
+    margin-top: 24px;
+  }
+  .facts {
+    display: grid;
+    gap: 0;
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: var(--seer-radius-md);
+    background: var(--seer-brand-ink);
+    color: var(--seer-on-ink);
+  }
+  .facts div {
+    padding-block: 16px;
+    border-top: 1px solid var(--seer-ink-border);
+  }
+  .facts div:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .facts div:last-child {
+    padding-bottom: 0;
+  }
+  dt {
+    font-weight: 600;
+    color: var(--seer-brand-lavender);
+  }
+  dd {
+    margin-top: 4px;
+    color: var(--seer-on-ink-muted);
+  }
+  @media (max-width: 900px) {
+    .protocol-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .protocol-wedges {
+      width: 100%;
+      height: 46%;
+      inset: auto 0 0 auto;
+      opacity: 0.55;
+    }
+  }
+</style>

@@ -1,0 +1,8 @@
+# The site lives in landing/; Netlify builds it there and publishes Astro's static output.
+[build]
+  base = "landing"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
