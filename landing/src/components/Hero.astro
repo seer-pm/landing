@@ -32,7 +32,7 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
     </div>
 
     <div class="hero-question">
-      <p class="question">{hero.question}</p>
+      <p class="question"><a href={hero.url}>{hero.question}</a></p>
       <p class="question-meta">
         {
           hero.asker ? (
@@ -121,11 +121,19 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
     border-top: 1px solid var(--seer-ink-border);
   }
   .question {
-    font-size: clamp(1.25rem, 1.05rem + 0.7vw, 1.625rem);
+    font-size: clamp(1.125rem, 1rem + 0.7vw, 1.625rem);
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: -0.01em;
     color: var(--seer-on-ink);
+  }
+  .question a {
+    text-decoration: none;
+  }
+  .question a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
   }
   .question-meta {
     margin-top: 12px;
@@ -163,33 +171,46 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
     color: var(--seer-on-ink-muted);
   }
 
-  /* On a phone the live question and its hills come straight after the headline, so the
-     distribution still lands in the first screen; the header keeps Open app in reach. */
+  /* Stacked, the whole first screen still carries the offer, the action and the live
+     distribution: the lead steps down a size and the question itself is the link to its market. */
   @media (max-width: 900px) {
     .hero-grid {
       grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
         "title"
-        "question"
-        "chart"
         "lead"
-        "actions";
+        "actions"
+        "question"
+        "chart";
+    }
+    .hero-lead {
+      margin-top: 14px;
+      font-size: 1rem;
+    }
+    .hero-actions {
+      margin-top: 20px;
+    }
+    .hero-actions .seer-button {
+      min-height: 44px;
+      padding-inline: 16px;
+      font-size: 14px;
     }
     .hero-question {
       margin-top: 24px;
-      padding-top: 20px;
+      padding-top: 18px;
+    }
+    .question-meta {
+      margin-top: 6px;
+      font-size: 13px;
     }
     .question-link {
-      margin-top: 10px;
+      display: none;
     }
     .question-control {
-      margin-top: 20px;
+      margin-top: 14px;
     }
     .hero-chart {
-      margin-top: 20px;
-    }
-    .hero-lead {
-      margin-top: 40px;
+      margin-top: 12px;
     }
   }
 </style>

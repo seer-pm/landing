@@ -8,7 +8,7 @@ const groups = [...seerFooterGroups, { title: "Contact", links: [{ name: SEER_CO
 
 <footer class="seer-footer">
   <div class="seer-footer-inner seer-footer-top">
-    <p class="seer-footer-tagline">Information finance, from question to signal.</p>
+    <p class="seer-footer-tagline footer-statement">Information finance, from question to signal.</p>
     <nav aria-label="Footer" class="seer-footer-nav">
       {
         groups.map((group, index) => (
@@ -43,3 +43,22 @@ const groups = [...seerFooterGroups, { title: "Contact", links: [{ name: SEER_CO
     </div>
   </div>
 </footer>
+
+<style>
+  /* Without a lockup the tagline is the footer's statement, set like the page's other ink type. */
+  .footer-statement {
+    margin-top: 0;
+    max-width: 18ch;
+    font-size: var(--text-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--seer-brand-lavender);
+  }
+  /* The divider spans the content, not the gutters around it. */
+  .seer-footer-bottom {
+    border-top: 0;
+    background: linear-gradient(var(--seer-ink-border), var(--seer-ink-border)) top center / calc(100% - 2 * var(--gutter))
+      1px no-repeat;
+  }
+</style>

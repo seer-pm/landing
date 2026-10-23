@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { id, labels } = Astro.props;
+// "30 days ago" shortens to "30d" where four options must share one row on a phone.
+const short = (label: string) => label.replace(/^(\d+) days ago$/, "$1d");
 ---
 
 {
@@ -18,7 +20,12 @@ const { id, labels } = Astro.props;
             <input type="radio" name={`${id}-snapshot`} value={index} checked={index === 0} />
             <span>
               <i class="swatch" style={`--swatch: var(--hill-${index})`} aria-hidden="true" />
-              {label}
+              <span class="label-long">{label}</span>
+              {short(label) !== label && (
+                <span class="label-short" aria-hidden="true">
+                  {short(label)}
+                </span>
+              )}
             </span>
           </label>
         ))}
@@ -62,7 +69,7 @@ const { id, labels } = Astro.props;
     opacity: 0;
     cursor: pointer;
   }
-  span {
+  label > span {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -81,7 +88,10 @@ const { id, labels } = Astro.props;
     border-radius: var(--seer-radius-full);
     background: var(--swatch);
   }
-  label:hover span {
+  .label-short {
+    display: none;
+  }
+  label:hover > span {
     color: var(--seer-on-ink);
   }
   input:checked + span {
@@ -93,16 +103,20 @@ const { id, labels } = Astro.props;
     outline: 2px solid var(--seer-brand-lavender);
     outline-offset: 2px;
   }
-  /* Below 640px the options wrap to two rows, which a pill outline cannot hold. */
   @media (max-width: 640px) {
     .snapshot-options {
-      border-radius: var(--seer-radius-md);
+      border-radius: var(--seer-radius-full);
     }
-  }
-  @media (max-width: 400px) {
-    span {
-      padding: 7px 10px;
-      font-size: 13px;
+    .label-long:has(+ .label-short) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .label-short {
+      display: inline;
     }
   }
 </style>
