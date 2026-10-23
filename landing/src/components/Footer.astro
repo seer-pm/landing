@@ -2,20 +2,13 @@
 import { KLEROS_URL, SEER_CONTACT_EMAIL, seerFooterGroups, seerSocialLinks } from "@seer-pm/ui-kit";
 
 // The kit's footer markup, rendered without React. Groups after the shared ones are this site's own.
+// The closing section's wordmark sits right above, so this footer leaves out the kit's lockup.
 const groups = [...seerFooterGroups, { title: "Contact", links: [{ name: SEER_CONTACT_EMAIL, url: `mailto:${SEER_CONTACT_EMAIL}` }] }];
 ---
 
 <footer class="seer-footer">
   <div class="seer-footer-inner seer-footer-top">
-    <div>
-      <a href="/" aria-label="Seer home">
-        <span class="seer-brand-lockup" aria-hidden="true">
-          <span class="seer-brand-bird"></span>
-          <span class="seer-brand-wordmark"></span>
-        </span>
-      </a>
-      <p class="seer-footer-tagline">Information finance, from question to signal.</p>
-    </div>
+    <p class="seer-footer-tagline">Information finance, from question to signal.</p>
     <nav aria-label="Footer" class="seer-footer-nav">
       {
         groups.map((group, index) => (

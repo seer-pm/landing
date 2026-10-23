@@ -23,8 +23,15 @@ const leaderThen = past?.probabilities[leaderIndex] ?? null;
       <div class="read-row">
         <dt>Who is asking</dt>
         <dd>
-          Anyone can. This question was created by <span class="numeric">{shortAddress(hero.creator)}</span>. DAOs
-          ask too: GnosisDAO and Kleros DAO run proposals through Futarchy to inform their votes.
+          Anyone can. {
+            hero.asker ? (
+              <>This question was asked by {hero.asker}. {hero.use}</>
+            ) : (
+              <>
+                This one was asked on Seer by <span class="numeric">{shortAddress(hero.creator)}</span>.
+              </>
+            )
+          } DAOs ask too: GnosisDAO and Kleros DAO run proposals through Futarchy to inform their votes.
         </dd>
       </div>
       <div class="read-row">

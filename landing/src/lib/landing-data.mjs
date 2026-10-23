@@ -13,8 +13,10 @@ export const SNAPSHOT_DAYS = [0, 7, 30, 90];
  * @typedef {{ name: string, probability: number }} Outcome
  * @typedef {{
  *   question: string, url: string, chainId: number, creator: string, liquidityUSD: number,
- *   outcomes: string[], snapshots: Snapshot[]
+ *   outcomes: string[], snapshots: Snapshot[], asker: string | null, use: string | null
  * }} HeroMarket
+ * @typedef {{ chainId: number, marketId: string, asker: string, use: string }} PinnedHero
+ * @typedef {{ hero?: PinnedHero | null, exclude?: string[] }} Featured
  * @typedef {{ question: string, url: string, leading: Outcome }} LedgerRow
  * @typedef {{ question: string, url: string, outcomes: Outcome[] }} RankedMarket
  * @typedef {{ dao: string, code: string, title: string, url: string, opensAt: number }} Proposal
@@ -109,12 +111,28 @@ async function heroSnapshots(market, now) {
   }));
 }
 
-/** The most liquid open question with three to eight priced answers carries the first viewport. */
-function pickHero(markets) {
-  return markets.find((market) => {
-    const outcomes = realOutcomes(market);
-    return outcomes.length >= 3 && outcomes.length <= 8 && outcomes.every(isPriced) && market.liquidityUSD >= 5000;
-  });
+/** A hero question has three to eight priced answers, enough to read as a distribution. */
+function heroReady(market) {
+  const outcomes = realOutcomes(market);
+  return outcomes.length >= 3 && outcomes.length <= 8 && outcomes.every(isPriced);
+}
+
+/**
+ * The pinned market when Seer has named its asker in featured.json and it is still open and
+ * priced; otherwise the most liquid open question that qualifies.
+ */
+async function pickHero(markets, pinned) {
+  if (pinned) {
+    const sameMarket = (market) => market.id.toLowerCase() === pinned.marketId.toLowerCase() && market.chainId === pinned.chainId;
+    let market = markets.find(sameMarket);
+    if (!market) {
+      const found = await searchMarkets({ marketIds: [pinned.marketId], chainsList: [String(pinned.chainId)] });
+      market = found.markets.map((entry) => ({ ...entry, liquidityUSD: Number(entry.liquidityUSD) || 0 })).find(sameMarket);
+    }
+    if (market && heroReady(market)) return { market, asker: pinned.asker, use: pinned.use };
+  }
+  const market = markets.find((entry) => heroReady(entry) && entry.liquidityUSD >= 5000);
+  return market ? { market, asker: null, use: null } : null;
 }
 
 const PROPOSAL = /\b(GIP|KIP)-(\d+)/;
@@ -159,18 +177,28 @@ async function riskBoard() {
   };
 }
 
-/** @returns {Promise<LandingData>} */
-export async function fetchLandingData() {
+/**
+ * @param {Featured} featured editorial choices from src/data/featured.json
+ * @returns {Promise<LandingData>}
+ */
+export async function fetchLandingData(featured = {}) {
   const now = Math.floor(Date.now() / 1000);
+  // Words that keep a market off the homepage, such as competitors' names. The page features
+  // whatever the feed returns, so this is the editorial line.
+  const exclude = (featured.exclude ?? []).map((word) => word.toLowerCase());
+  const allowed = (market) => !exclude.some((word) => market.marketName.toLowerCase().includes(word));
   const open = await searchMarkets({
     marketStatusList: ["open"],
     orderBy: "liquidityUSD",
     orderDirection: "desc",
     limit: 80,
   });
-  const markets = open.markets.map((market) => ({ ...market, liquidityUSD: Number(market.liquidityUSD) || 0 }));
-  const hero = pickHero(markets);
-  if (!hero) throw new Error("No open market qualifies for the hero");
+  const markets = open.markets
+    .map((market) => ({ ...market, liquidityUSD: Number(market.liquidityUSD) || 0 }))
+    .filter(allowed);
+  const picked = await pickHero(markets, featured.hero ?? null);
+  if (!picked) throw new Error("No open market qualifies for the hero");
+  const hero = picked.market;
 
   const many = markets
     .filter((market) => ranked(market).length >= 20)
@@ -209,6 +237,8 @@ export async function fetchLandingData() {
       liquidityUSD: hero.liquidityUSD,
       outcomes: realOutcomes(hero).map((outcome) => outcome.name),
       snapshots,
+      asker: picked.asker,
+      use: picked.use,
     },
     ledger,
     manyOutcomes: many ? { question: many.marketName.trim(), url: marketUrl(many), outcomes: ranked(many) } : null,

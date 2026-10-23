@@ -102,6 +102,20 @@ const leaders = many?.outcomes.slice(0, 3) ?? [];
 
             {app.id === "futarchy" && (
               <>
+                <figure class="fork">
+                  <svg viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M8 60H200C270 60 290 14 360 14H592" />
+                    <path d="M200 60C270 60 290 106 360 106H592" />
+                    <path class="fork-gap" d="M560 22V98" />
+                  </svg>
+                  <span class="fork-label fork-proposal">A proposal</span>
+                  <span class="fork-label fork-pass">Token price if it passes</span>
+                  <span class="fork-label fork-fail">Token price if it fails</span>
+                  <figcaption>
+                    One proposal, two markets on the DAO's token. The gap between the two prices is the signal; Futarchy
+                    shows both for every live proposal.
+                  </figcaption>
+                </figure>
                 <p class="visual-note">Recent proposals put to a market before the vote:</p>
                 <ol class="proposals">
                   {data.proposals.map((proposal) => (
@@ -114,10 +128,6 @@ const leaders = many?.outcomes.slice(0, 3) ?? [];
                     </li>
                   ))}
                 </ol>
-                <p class="visual-foot">
-                  Each market prices the DAO's token twice: if the proposal passes, and if it does not. The gap is the
-                  signal.
-                </p>
               </>
             )}
 
@@ -244,6 +254,57 @@ const leaders = many?.outcomes.slice(0, 3) ?? [];
   }
   .visual-foot strong {
     color: var(--seer-text);
+  }
+
+  /* Futarchy's own shape: the fork a proposal opens. A diagram of the mechanism, so it carries no
+     numbers; the proposal list below it is the real data. */
+  .fork {
+    position: relative;
+    margin: 0 0 28px;
+    padding-top: 26px;
+  }
+  .fork svg {
+    width: 100%;
+    height: 120px;
+  }
+  .fork path {
+    fill: none;
+    stroke: var(--seer-brand-purple);
+    stroke-width: 4px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .fork .fork-gap {
+    stroke: var(--seer-muted);
+    stroke-width: 1.5px;
+    stroke-dasharray: 3 4;
+  }
+  .fork-label {
+    position: absolute;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--seer-muted);
+  }
+  .fork-proposal {
+    left: 0;
+    top: calc(26px + 60px + 10px);
+  }
+  .fork-pass {
+    right: 0;
+    top: 0;
+    font-weight: 600;
+    color: var(--seer-text);
+  }
+  .fork-fail {
+    right: 0;
+    top: calc(26px + 106px + 8px);
+    font-weight: 600;
+    color: var(--seer-text);
+  }
+  .fork figcaption {
+    margin-top: 36px;
+    font-size: 14px;
+    color: var(--seer-muted);
   }
 
   .ledger,

@@ -1,8 +1,9 @@
 ---
 import { convergencePaths } from "@seer-pm/ui-kit";
 
-// Wide on the left, meeting at one point past the right edge: many positions, one price.
-const wedges = convergencePaths({ start: 20, pitch: 140, wedge: 70, focus: [1500, 480] });
+// Seven wedges from the left edge meeting at one point inside the frame: many positions, one price.
+const FOCUS: [number, number] = [1040, 180];
+const wedges = convergencePaths({ start: 6, pitch: 50, wedge: 28, focus: FOCUS });
 
 const facts = [
   ["Market types", "Categorical, multi-categorical, scalar, multi-scalar and conditional."],
@@ -12,10 +13,7 @@ const facts = [
 ];
 ---
 
-<section class="section field-purple protocol" aria-labelledby="protocol-title">
-  <svg class="protocol-wedges" viewBox="0 0 1400 980" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-    {wedges.map((d) => <path d={d} />)}
-  </svg>
+<section class="field-purple protocol" aria-labelledby="protocol-title">
   <div class="container protocol-grid">
     <div>
       <h2 id="protocol-title" class="h2">One protocol underneath.</h2>
@@ -35,22 +33,18 @@ const facts = [
       }
     </dl>
   </div>
+  <div class="protocol-band" aria-hidden="true">
+    <svg viewBox="0 0 1440 360" preserveAspectRatio="none" focusable="false">
+      {wedges.map((d) => <path d={d} />)}
+    </svg>
+    <span class="protocol-point" style={`left: ${(FOCUS[0] / 1440) * 100}%`}>One price per answer</span>
+  </div>
 </section>
 
 <style>
   .protocol {
-    position: relative;
+    padding-top: var(--section-block);
     overflow: hidden;
-    isolation: isolate;
-  }
-  .protocol-wedges {
-    position: absolute;
-    inset: 0 0 0 auto;
-    width: min(70%, 980px);
-    height: 100%;
-    fill: var(--seer-brand-ink);
-    opacity: 0.9;
-    z-index: -1;
   }
   .protocol-grid {
     display: grid;
@@ -60,14 +54,13 @@ const facts = [
   }
   h2 {
     max-width: 11ch;
+    color: var(--seer-brand-white);
   }
   .protocol-lead {
     max-width: 40ch;
     margin-top: 24px;
   }
   .facts {
-    display: grid;
-    gap: 0;
     padding: clamp(20px, 3vw, 32px);
     border-radius: var(--seer-radius-md);
     background: var(--seer-brand-ink);
@@ -92,15 +85,38 @@ const facts = [
     margin-top: 4px;
     color: var(--seer-on-ink-muted);
   }
+
+  /* The motif owns a full-bleed band at the foot of the field, as on the posters, and nothing
+     covers the point where the wedges meet. */
+  .protocol-band {
+    position: relative;
+    margin-top: clamp(56px, 7vw, 96px);
+    height: clamp(170px, 24vw, 340px);
+  }
+  .protocol-band svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--seer-brand-ink);
+  }
+  .protocol-point {
+    position: absolute;
+    top: 50%;
+    padding-left: 20px;
+    transform: translateY(-50%);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--seer-brand-white);
+  }
   @media (max-width: 900px) {
     .protocol-grid {
       grid-template-columns: minmax(0, 1fr);
     }
-    .protocol-wedges {
-      width: 100%;
-      height: 46%;
-      inset: auto 0 0 auto;
-      opacity: 0.55;
+  }
+  @media (max-width: 720px) {
+    .protocol-point {
+      display: none;
     }
   }
 </style>

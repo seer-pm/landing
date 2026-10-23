@@ -16,7 +16,10 @@ const { id, labels } = Astro.props;
         {labels.map((label, index) => (
           <label>
             <input type="radio" name={`${id}-snapshot`} value={index} checked={index === 0} />
-            <span>{label}</span>
+            <span>
+              <i class="swatch" style={`--swatch: var(--hill-${index})`} aria-hidden="true" />
+              {label}
+            </span>
           </label>
         ))}
       </div>
@@ -60,14 +63,23 @@ const { id, labels } = Astro.props;
     cursor: pointer;
   }
   span {
-    display: block;
-    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
     border-radius: var(--seer-radius-full);
     font-size: 14px;
     color: var(--seer-on-ink-muted);
     transition:
       background-color var(--seer-duration-fast) var(--seer-ease-out),
       color var(--seer-duration-fast) var(--seer-ease-out);
+  }
+  /* The same colour the snapshot's hills are drawn in, so the control is also the chart's key. */
+  .swatch {
+    width: 14px;
+    height: 4px;
+    border-radius: var(--seer-radius-full);
+    background: var(--swatch);
   }
   label:hover span {
     color: var(--seer-on-ink);
@@ -80,6 +92,12 @@ const { id, labels } = Astro.props;
   input:focus-visible + span {
     outline: 2px solid var(--seer-brand-lavender);
     outline-offset: 2px;
+  }
+  /* Below 640px the options wrap to two rows, which a pill outline cannot hold. */
+  @media (max-width: 640px) {
+    .snapshot-options {
+      border-radius: var(--seer-radius-md);
+    }
   }
   @media (max-width: 400px) {
     span {

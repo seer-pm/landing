@@ -1,12 +1,12 @@
 {
-  "generatedAt": 1792721671,
+  "generatedAt": 1792722115,
   "openMarkets": 2137,
   "hero": {
     "question": "Which party or joint electoral list will win the most seats in Israeli Knesset election in 2026?",
     "url": "https://app.seer.pm/markets/100/0x31cb54c49479243333594eb7343d31f6bd1ddfd3",
     "chainId": 100,
     "creator": "0xb5a6a9c6d779e7dd7815f94ae2ccfb153a21801c",
-    "liquidityUSD": 27584.34681100843,
+    "liquidityUSD": 27584.537024027562,
     "outcomes": [
       "Yashar",
       "Likud",
@@ -54,7 +54,9 @@
           0.01
         ]
       }
-    ]
+    ],
+    "asker": null,
+    "use": null
   },
   "ledger": [
     {
@@ -66,14 +68,6 @@
       }
     },
     {
-      "question": "Will Polymarket publicly release a fix for the negative-risk mint/merge share cost basis accounting issue before January 1, 2027?",
-      "url": "https://app.seer.pm/markets/100/0xfe8abb3b55acca31e74243349573801c379507b3",
-      "leading": {
-        "name": "Yes",
-        "probability": 0.401
-      }
-    },
-    {
       "question": "Will the Digital Asset Market Clarity Act be approved by the U.S. Senate, excluding committee approval, in 2026?",
       "url": "https://app.seer.pm/markets/100/0xe820d073f8885f4a24328ba9fbb8a745114bb647",
       "leading": {
@@ -82,11 +76,19 @@
       }
     },
     {
-      "question": "Will Donald Trump issue an official presidential pardon for Ghislaine Maxwell by December 31st  2026?",
-      "url": "https://app.seer.pm/markets/100/0x0a2e852ade1b60ceae19e2d9a6f0a97da2d0dc06",
+      "question": "Who will win the 2026 South Sudanese presidential election?",
+      "url": "https://app.seer.pm/markets/100/0x2c04736e1698d13a554cca3558e7bfe9f5334a00",
       "leading": {
-        "name": "Yes",
-        "probability": 0.06
+        "name": "Salva Kiir Mayardit",
+        "probability": 0.898
+      }
+    },
+    {
+      "question": "Will GTA 6 achieve the highest first-day unit sales of any GTA game?",
+      "url": "https://app.seer.pm/markets/100/0x67ea7fc200ff1c2a8817c1efd4b56cdd6ef0a060",
+      "leading": {
+        "name": "YES",
+        "probability": 0.805
       }
     }
   ],

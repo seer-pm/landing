@@ -8,16 +8,17 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Protocol from "../components/Protocol.astro";
 import ReadGuide from "../components/ReadGuide.astro";
+import featured from "../data/featured.json";
 import snapshot from "../data/snapshot.json";
 import { fetchLandingData } from "../lib/landing-data.mjs";
-import type { LandingData } from "../lib/types";
+import type { Featured, LandingData } from "../lib/types";
 
 // Live data at build time. When an API is down the page still ships, with the last committed
 // snapshot and the date it was taken. LANDING_DATA=snapshot skips the network in local work.
 let data: LandingData = snapshot as LandingData;
 if (import.meta.env.LANDING_DATA !== "snapshot") {
   try {
-    data = await fetchLandingData();
+    data = await fetchLandingData(featured as Featured);
   } catch (error) {
     console.warn(`Landing data: using the committed snapshot (${(error as Error).message})`);
   }

@@ -95,6 +95,12 @@ svg {
   padding-block: var(--section-block);
 }
 
+/* The kit's footer sizes itself for the app shell; here its content edge follows the page's. */
+.seer-footer-inner {
+  max-width: calc(var(--measure) + var(--gutter) * 2);
+  padding-inline: var(--gutter);
+}
+
 .h2 {
   font-size: var(--text-h2);
   line-height: 1.08;
