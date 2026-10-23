@@ -94,10 +94,10 @@ svg {
   padding-block: var(--section-block);
 }
 
-/* The kit's footer sizes itself for the app shell; here its content edge follows the page's. */
-.seer-footer-inner {
-  max-width: calc(var(--measure) + var(--gutter) * 2);
-  padding-inline: var(--gutter);
+/* The kit's footer lines up with the page's own content column. */
+.seer-footer {
+  --seer-footer-max-width: calc(var(--measure) + var(--gutter) * 2);
+  --seer-footer-gutter: var(--gutter);
 }
 
 .h2 {

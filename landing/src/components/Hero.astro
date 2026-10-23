@@ -27,8 +27,8 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
       question, and the market's prices become a live estimate anyone can read.
     </p>
     <div class="hero-actions">
-      <a class="seer-button seer-button-primary" href="https://app.seer.pm">Explore markets</a>
-      <a class="seer-button seer-button-secondary" href="#read">How to read a market</a>
+      <a class="seer-button seer-button-primary seer-button-lg" href="https://app.seer.pm">Explore markets</a>
+      <a class="seer-button seer-button-secondary seer-button-lg" href="#read">How to read a market</a>
     </div>
 
     <div class="hero-question">
@@ -109,11 +109,6 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
     gap: 12px;
     margin-top: 28px;
   }
-  .hero-actions .seer-button {
-    min-height: 48px;
-    padding-inline: 22px;
-    font-size: 15px;
-  }
   .hero-question {
     grid-area: question;
     align-self: end;
@@ -190,6 +185,7 @@ const shown = hero.snapshots.filter((snapshot) => snapshot.probabilities.some((v
     .hero-actions {
       margin-top: 20px;
     }
+    /* Both actions share one row on a phone, a step below the kit's large size. */
     .hero-actions .seer-button {
       min-height: 44px;
       padding-inline: 16px;

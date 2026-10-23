@@ -36,8 +36,8 @@ the `seer-pm` monorepo (`packages/seer-pm-ui-kit`). Change brand values there, n
 
 ## Before the first production deploy
 
-- `@seer-pm/ui-kit` is not on npm yet. `landing/vendor/seer-pm-ui-kit-0.1.0.tgz` is the packed
-  package; once 0.1.0 is published, depend on `"@seer-pm/ui-kit": "0.1.0"` and delete `vendor/`.
+- `@seer-pm/ui-kit` is not on npm yet. `landing/vendor/seer-pm-ui-kit-0.2.0.tgz` is the packed
+  package; once 0.2.0 is published, depend on `"@seer-pm/ui-kit": "0.2.0"` and delete `vendor/`.
 - The Netlify site currently publishes `landing/` as static files with no build command. The new
   `netlify.toml` replaces those settings; check the first deploy preview, including
   `/airdrop`, `/markets/100/<id>` and `/#/markets/100/<id>`.

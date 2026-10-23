@@ -9,7 +9,7 @@
     "snapshot": "node scripts/snapshot.mjs"
   },
   "dependencies": {
-    "@seer-pm/ui-kit": "file:vendor/seer-pm-ui-kit-0.1.0.tgz",
+    "@seer-pm/ui-kit": "file:vendor/seer-pm-ui-kit-0.2.0.tgz",
     "astro": "7.3.8"
   },
   "engines": {
