@@ -1,0 +1,67 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#141223" />
+    <meta name="application-name" content="Seer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Seer" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL("/assets/head/ms-icon-310x310.png", Astro.site)} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@seer_pm" />
+
+    <link rel="icon" href="/assets/head/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/head/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/head/android-icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/head/apple-icon-180x180.png" />
+    <link rel="manifest" href="/assets/head/manifest.json" />
+    <meta name="msapplication-config" content="/assets/head/browserconfig.xml" />
+
+    <!-- Old market links used a hash route (/#/markets/<chain>/<id>). The hash never reaches the
+         server, so only the page can forward it; the path form is a 301 in public/_redirects. -->
+    <script is:inline>
+      (function () {
+        var match = location.hash.match(/\/markets\/(\d+)\/(0x[0-9a-fA-F]{40})/);
+        if (match) location.replace("https://app.seer.pm/markets/" + match[1] + "/" + match[2]);
+      })();
+    </script>
+  </head>
+  <body>
+    <!--
+      THESIS: Seer turns questions into distributions, and every app has the shape of its own. The
+      page refuses the category default (a hero claim over a grid of feature cards) and leads with
+      a live market's belief instead.
+      OWN-WORLD: Electric Foundation. Ink #141223 and purple #7D33FF fields at page scale, lavender
+      display type on ink, Open Sans throughout, belief hills drawn as the stacked brand curves.
+      STORY: the visitor sees a real question and how its answer moved, learns to read it without
+      trading, finds the app that fits their own question, then sees the protocol underneath.
+      FIRST VIEWPORT: ink field. Top left, the H1 and Explore markets; top right, the live question
+      with who asked it; the lower half, its distribution as stacked hills (now, 7, 30, 90 days).
+      FORM: "Each question, its distribution", first of three dealt structures. Seed 2f24eef4.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
+      verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

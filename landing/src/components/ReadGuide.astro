@@ -1,0 +1,157 @@
+---
+import type { LandingData } from "../lib/types";
+import { percent, price, shortAddress } from "../lib/format.mjs";
+
+interface Props {
+  data: LandingData;
+}
+
+const { hero } = Astro.props.data;
+const now = hero.snapshots[0].probabilities;
+const leaderIndex = now.reduce((best, value, index) => ((value ?? 0) > (now[best] ?? 0) ? index : best), 0);
+const leader = hero.outcomes[leaderIndex];
+const leaderNow = now[leaderIndex] ?? 0;
+// The oldest snapshot that already had a price for the leading answer.
+const past = [...hero.snapshots].reverse().find((snapshot) => snapshot.daysAgo > 0 && snapshot.probabilities[leaderIndex] !== null);
+const leaderThen = past?.probabilities[leaderIndex] ?? null;
+---
+
+<section id="read" class="section read" aria-labelledby="read-title">
+  <div class="container read-grid">
+    <h2 id="read-title" class="h2">Read the market. No trade required.</h2>
+    <dl class="read-rows">
+      <div class="read-row">
+        <dt>Who is asking</dt>
+        <dd>
+          Anyone can. {
+            hero.asker ? (
+              <>This question was asked by {hero.asker}. {hero.use}</>
+            ) : (
+              <>
+                This one was asked on Seer by <span class="numeric">{shortAddress(hero.creator)}</span>.
+              </>
+            )
+          } DAOs ask too: GnosisDAO and Kleros DAO run proposals through Futarchy to inform their votes.
+        </dd>
+      </div>
+      <div class="read-row">
+        <dt>What is being priced</dt>
+        <dd>
+          Each answer is a token that pays out one unit of collateral if it turns out right, so its price is the chance
+          the market gives that answer. {leader} trades at <span class="numeric">{price(leaderNow)}</span>: a {
+            percent(leaderNow)
+          } chance.
+        </dd>
+      </div>
+      <div class="read-row">
+        <dt>How to use the signal</dt>
+        <dd>
+          {
+            past && leaderThen !== null ? (
+              <>
+                Watch it move. {past.daysAgo} days ago the market gave {leader} {percent(leaderThen)}; today it gives{" "}
+                {percent(leaderNow)}. That shift is information you can act on without ever placing a trade.
+              </>
+            ) : (
+              <>
+                Watch it move. Every trade updates the estimate, and the shift is information you can act on without ever
+                placing a trade.
+              </>
+            )
+          }
+        </dd>
+        {
+          past && leaderThen !== null && (
+            <p class="read-shift numeric" aria-hidden="true">
+              <span class="then">{percent(leaderThen)}</span>
+              <svg viewBox="0 0 40 16">
+                <path d="M2 8h34M30 2l6 6-6 6" />
+              </svg>
+              <span class="now">{percent(leaderNow)}</span>
+              <span class="who">{leader}</span>
+            </p>
+          )
+        }
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .read {
+    background: var(--seer-page);
+    color: var(--seer-text);
+  }
+  .read-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .read-grid h2 {
+    max-width: 12ch;
+    position: sticky;
+    top: 40px;
+  }
+  .read-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding-block: 28px;
+    border-top: 1px solid var(--seer-border);
+  }
+  .read-row:last-child {
+    border-bottom: 1px solid var(--seer-border);
+  }
+  dt {
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  dd {
+    max-width: 60ch;
+    color: var(--seer-muted);
+    font-size: 1.0625rem;
+  }
+  .read-shift {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-top: 12px;
+    font-size: clamp(2.5rem, 1.6rem + 3vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+  .read-shift .then {
+    color: var(--seer-muted);
+  }
+  .read-shift .now {
+    color: var(--seer-brand-purple);
+  }
+  .read-shift svg {
+    width: clamp(28px, 3vw, 40px);
+    align-self: center;
+    fill: none;
+    stroke: var(--seer-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .read-shift .who {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--seer-muted);
+  }
+  @media (max-width: 900px) {
+    .read-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .read-grid h2 {
+      position: static;
+    }
+  }
+</style>

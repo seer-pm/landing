@@ -1,0 +1,64 @@
+---
+import { KLEROS_URL, SEER_CONTACT_EMAIL, seerFooterGroups, seerSocialLinks } from "@seer-pm/ui-kit";
+
+// The kit's footer markup, rendered without React. Groups after the shared ones are this site's own.
+// The closing section's wordmark sits right above, so this footer leaves out the kit's lockup.
+const groups = [...seerFooterGroups, { title: "Contact", links: [{ name: SEER_CONTACT_EMAIL, url: `mailto:${SEER_CONTACT_EMAIL}` }] }];
+---
+
+<footer class="seer-footer">
+  <div class="seer-footer-inner seer-footer-top">
+    <p class="seer-footer-tagline footer-statement">Information finance, from question to signal.</p>
+    <nav aria-label="Footer" class="seer-footer-nav">
+      {
+        groups.map((group, index) => (
+          <div class="seer-footer-group">
+            <p id={`footer-group-${index}`} class="seer-footer-group-title">
+              {group.title}
+            </p>
+            <ul aria-labelledby={`footer-group-${index}`}>
+              {group.links.map((link) => (
+                <li>
+                  <a href={link.url}>{link.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+  <div class="seer-footer-inner seer-footer-bottom">
+    <a href={KLEROS_URL} target="_blank" rel="noopener noreferrer" aria-label="Secured by Kleros">
+      <span class="seer-icon seer-icon-secured-by-kleros" aria-hidden="true"></span>
+    </a>
+    <div class="seer-footer-socials">
+      {
+        seerSocialLinks.map((social) => (
+          <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Seer on ${social.name}`}>
+            <span class={`seer-icon seer-icon-${social.id}`} aria-hidden="true" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Without a lockup the tagline is the footer's statement, set like the page's other ink type. */
+  .footer-statement {
+    margin-top: 0;
+    max-width: 18ch;
+    font-size: var(--text-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--seer-brand-lavender);
+  }
+  /* The divider spans the content, not the gutters around it. */
+  .seer-footer-bottom {
+    border-top: 0;
+    background: linear-gradient(var(--seer-ink-border), var(--seer-ink-border)) top center / calc(100% - 2 * var(--gutter))
+      1px no-repeat;
+  }
+</style>

@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T02:36:50.156Z",
+  "title": "Design System: Seer Landing",
+  "extensions": {
+    "tokenOwner": {
+      "package": "@seer-pm/ui-kit",
+      "version": "0.1.0",
+      "source": "packages/seer-pm-ui-kit in the seer-pm monorepo (css/tokens.css, css/base.css, css/components.css)",
+      "localTokens": [
+        "--gutter",
+        "--measure",
+        "--section-block",
+        "--text-h2",
+        "--text-h3",
+        "--text-lead",
+        "--hill-0..3"
+      ]
+    },
+    "colorMeta": {
+      "brand-purple": {
+        "role": "primary",
+        "displayName": "Electric Purple",
+        "canonical": "#7d33ff",
+        "cssVar": "--seer-brand-purple",
+        "tonalRamp": [
+          "#0e002b",
+          "#2a0063",
+          "#4900a2",
+          "#6a00e5",
+          "#8755ff",
+          "#a690ff",
+          "#cac1ff",
+          "#eeecff"
+        ]
+      },
+      "brand-purple-hover": {
+        "role": "primary",
+        "displayName": "Pressed Purple",
+        "canonical": "#6925df",
+        "cssVar": "--seer-brand-purple-hover",
+        "tonalRamp": [
+          "#0e002c",
+          "#290064",
+          "#4800a3",
+          "#6620dc",
+          "#8557ff",
+          "#a591ff",
+          "#c9c2ff",
+          "#eeecff"
+        ]
+      },
+      "brand-purple-on-ink": {
+        "role": "secondary",
+        "displayName": "Signal Purple",
+        "canonical": "#8f55f7",
+        "cssVar": "--seer-brand-purple-on-ink",
+        "tonalRamp": [
+          "#10002a",
+          "#2d0060",
+          "#4e009c",
+          "#6d28cd",
+          "#8f55f7",
+          "#ad8dff",
+          "#cec0ff",
+          "#efebff"
+        ]
+      },
+      "brand-ink": {
+        "role": "neutral",
+        "displayName": "Foundation Ink",
+        "canonical": "#141223",
+        "cssVar": "--seer-brand-ink",
+        "tonalRamp": [
+          "#0b0818",
+          "#232134",
+          "#3f3d51",
+          "#5c5b70",
+          "#7f7d94",
+          "#a3a2b9",
+          "#c9c8e0",
+          "#edecff"
+        ]
+      },
+      "brand-lavender": {
+        "role": "secondary",
+        "displayName": "Poster Lavender",
+        "canonical": "#bfbfe6",
+        "cssVar": "--seer-brand-lavender",
+        "tonalRamp": [
+          "#0a0621",
+          "#22203d",
+          "#3d3b5c",
+          "#5a597c",
+          "#7c7ca0",
+          "#a0a0c6",
+          "#c6c6ed",
+          "#ecedff"
+        ]
+      },
+      "brand-white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "cssVar": "--seer-brand-white",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "on-ink": {
+        "role": "neutral",
+        "displayName": "Lilac White",
+        "canonical": "#f2edff",
+        "cssVar": "--seer-on-ink",
+        "tonalRamp": [
+          "#0c0914",
+          "#25212e",
+          "#413d4b",
+          "#5f5b6a",
+          "#827d8d",
+          "#a6a2b2",
+          "#ccc7d9",
+          "#f0ebfd"
+        ]
+      },
+      "on-ink-muted": {
+        "role": "neutral",
+        "displayName": "Dusk Grey",
+        "canonical": "#b9b1ca",
+        "cssVar": "--seer-on-ink-muted",
+        "tonalRamp": [
+          "#0e0718",
+          "#272033",
+          "#433c50",
+          "#61596f",
+          "#837c93",
+          "#a8a0b8",
+          "#cec6df",
+          "#f1ebff"
+        ]
+      },
+      "ink-border": {
+        "role": "neutral",
+        "displayName": "Ink Hairline",
+        "canonical": "#39314a",
+        "cssVar": "--seer-ink-border",
+        "tonalRamp": [
+          "#0e061b",
+          "#271f37",
+          "#433b54",
+          "#615874",
+          "#837b98",
+          "#a89fbd",
+          "#cec5e4",
+          "#f1ebff"
+        ]
+      },
+      "accent-soft": {
+        "role": "secondary",
+        "displayName": "Lilac Wash",
+        "canonical": "#efe9fc",
+        "cssVar": "--seer-accent-soft (light)",
+        "tonalRamp": [
+          "#0d0914",
+          "#26212f",
+          "#423d4c",
+          "#605a6a",
+          "#827d8e",
+          "#a7a1b3",
+          "#cdc7d9",
+          "#f1ebfe"
+        ]
+      },
+      "accent-text": {
+        "role": "secondary",
+        "displayName": "Link Violet",
+        "canonical": "#6c2bd9",
+        "cssVar": "--seer-accent-text (light)",
+        "tonalRamp": [
+          "#0f002b",
+          "#2b0062",
+          "#4a00a0",
+          "#6925d5",
+          "#8954ff",
+          "#a88fff",
+          "#cbc1ff",
+          "#eeecff"
+        ]
+      },
+      "accent-soft-dark": {
+        "role": "secondary",
+        "displayName": "Ink Wash",
+        "canonical": "#241e33",
+        "cssVar": "--seer-accent-soft (dark)",
+        "tonalRamp": [
+          "#0d071a",
+          "#262035",
+          "#423b52",
+          "#5f5972",
+          "#827c96",
+          "#a7a0bb",
+          "#cdc6e2",
+          "#f0ebff"
+        ]
+      },
+      "accent-text-dark": {
+        "role": "secondary",
+        "displayName": "Bright Violet",
+        "canonical": "#b18aff",
+        "cssVar": "--seer-accent-text (dark)",
+        "tonalRamp": [
+          "#110028",
+          "#2f005d",
+          "#4d1c8b",
+          "#6b40ae",
+          "#8d65d6",
+          "#b18bff",
+          "#d1beff",
+          "#f0ebff"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f7f7f9",
+        "cssVar": "--seer-page (light)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242425",
+          "#3f3f41",
+          "#5d5d5f",
+          "#808082",
+          "#a4a4a6",
+          "#cacacc",
+          "#eeeef0"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface White",
+        "canonical": "#ffffff",
+        "cssVar": "--seer-surface (light)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Grey",
+        "canonical": "#f1f1f4",
+        "cssVar": "--seer-surface-raised (light)",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#808082",
+          "#a4a4a7",
+          "#cacacd",
+          "#eeeef1"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Near Black",
+        "canonical": "#17171c",
+        "cssVar": "--seer-text (light)",
+        "tonalRamp": [
+          "#0b0b0f",
+          "#232329",
+          "#3f3f45",
+          "#5d5d63",
+          "#7f7f86",
+          "#a4a4ab",
+          "#cacad1",
+          "#eeeef5"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "#5c5c66",
+        "cssVar": "--seer-muted (light)",
+        "tonalRamp": [
+          "#0a0a12",
+          "#23232c",
+          "#3f3f48",
+          "#5c5c66",
+          "#7f7f8a",
+          "#a3a3ae",
+          "#c9c9d5",
+          "#ededf9"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline Grey",
+        "canonical": "#e2e2e9",
+        "cssVar": "--seer-border (light)",
+        "tonalRamp": [
+          "#0b0b0f",
+          "#232328",
+          "#3f3f45",
+          "#5d5d63",
+          "#7f7f86",
+          "#a4a4aa",
+          "#cacad1",
+          "#eeeef5"
+        ]
+      },
+      "hill-1": {
+        "role": "tertiary",
+        "displayName": "Receding Hill 1",
+        "canonical": "#6a35cf",
+        "cssVar": "--hill-1 (landing global.css)",
+        "tonalRamp": [
+          "#0f002b",
+          "#2b0062",
+          "#4a00a0",
+          "#6731cb",
+          "#885bf5",
+          "#a88fff",
+          "#cbc1ff",
+          "#eeecff"
+        ]
+      },
+      "hill-2": {
+        "role": "tertiary",
+        "displayName": "Receding Hill 2",
+        "canonical": "#50289c",
+        "cssVar": "--hill-2 (landing global.css)",
+        "tonalRamp": [
+          "#0f002b",
+          "#2b0062",
+          "#481c91",
+          "#6441b5",
+          "#8666de",
+          "#a98fff",
+          "#ccc1ff",
+          "#eeecff"
+        ]
+      },
+      "hill-3": {
+        "role": "tertiary",
+        "displayName": "Receding Hill 3",
+        "canonical": "#3b1e70",
+        "cssVar": "--hill-3 (landing global.css)",
+        "tonalRamp": [
+          "#0f002a",
+          "#2b075c",
+          "#462b7d",
+          "#634ba0",
+          "#856ec7",
+          "#a993ef",
+          "#cdc0ff",
+          "#efecff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero H1 only, lavender on ink, held to 16ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section H2 (.h2, --text-h2)."
+      },
+      "headline-sm": {
+        "displayName": "Headline small",
+        "purpose": "Application names in the ecosystem rows."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Read-guide terms, builder entries, the convergence label, the footer statement (--text-h3)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The paragraph under a headline (.lead, --text-lead), 40 to 56ch."
+      },
+      "body-lg": {
+        "displayName": "Body large",
+        "purpose": "Read-guide answers and application summaries."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Document default."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Chart notes, question meta, snapshot legend and options, answer and bar names."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Price stamp, fork labels, proposal DAO and date."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "The kit's .seer-button text; 15px on large buttons."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Probabilities under the hills; all figures are 600 with tabular numerals."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Literal code strings in the Builders list only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "0 18px 40px -12px rgb(8 6 20 / 0.55)",
+        "purpose": "The Apps menu panel, the only overlay on the page."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every transition and animation (--seer-ease-out, from the kit)."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Color, decoration, opacity and chevron state changes (--seer-duration-fast, from the kit)."
+      },
+      {
+        "name": "panel-in",
+        "value": "180ms",
+        "purpose": "Apps menu entrance: fade with a 4px drop."
+      },
+      {
+        "name": "hill-wipe",
+        "value": "1100ms, 120ms stagger",
+        "purpose": "The page's one authored moment: hero snapshots wipe in from the left, oldest first, current last. Only without a reduced-motion preference."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Under prefers-reduced-motion every animation and transition collapses."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "split",
+        "value": "900px",
+        "purpose": "Two-column grids stack; hero stacks."
+      },
+      {
+        "name": "band-label",
+        "value": "720px",
+        "purpose": "Convergence label hides."
+      },
+      {
+        "name": "compact",
+        "value": "640px",
+        "purpose": "Header compacts, hill strokes thin, snapshot labels shorten, kit footer stacks."
+      },
+      {
+        "name": "narrow",
+        "value": "520px",
+        "purpose": "Ranked bars and proposal list reflow."
+      }
+    ],
+    "layout": {
+      "measure": "1280px",
+      "gutter": "clamp(16px, 4vw, 40px)",
+      "section": "clamp(72px, 10vw, 144px)"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The kit's .seer-button-primary: the one solid purple action per group.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Open app</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 0; border-radius: var(--seer-radius-sm, 4px); background: var(--seer-brand-purple, #7d33ff); color: var(--seer-brand-white, #ffffff); font: 600 14px/1.2 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); text-decoration: none; cursor: pointer; transition: background-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-primary:hover { background: var(--seer-brand-purple-hover, #6925df); } .ds-btn-primary:focus-visible { outline: 2px solid var(--seer-accent-text, #6c2bd9); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The kit's .seer-button-secondary on a light ground; always paired with a primary.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">How to read a market</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 0; border-radius: var(--seer-radius-sm, 4px); background: #efe9fc; color: #6c2bd9; font: 600 14px/1.2 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); text-decoration: none; cursor: pointer; transition: background-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-secondary:hover { background: color-mix(in srgb, #efe9fc, #7d33ff 14%); } .ds-btn-secondary:focus-visible { outline: 2px solid #6c2bd9; outline-offset: 3px; }"
+    },
+    {
+      "name": "Large Actions on Ink",
+      "kind": "button",
+      "refersTo": "button-primary-large",
+      "description": "Hero and closing action pair: large primary plus the secondary in its dark-theme accents.",
+      "html": "<div class=\"ds-ink-actions\"><a class=\"ds-btn-lg ds-btn-lg-primary\" href=\"#\">Create a market</a><a class=\"ds-btn-lg ds-btn-lg-secondary\" href=\"#\">Explore markets</a></div>",
+      "css": ".ds-ink-actions { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px; background: var(--seer-brand-ink, #141223); } .ds-btn-lg { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: var(--seer-radius-sm, 4px); font: 600 15px/1.2 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); text-decoration: none; transition: background-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-lg-primary { background: var(--seer-brand-purple, #7d33ff); color: var(--seer-brand-white, #ffffff); } .ds-btn-lg-primary:hover { background: var(--seer-brand-purple-hover, #6925df); } .ds-btn-lg-secondary { background: #241e33; color: #b18aff; } .ds-btn-lg-secondary:hover { background: color-mix(in srgb, #241e33, #7d33ff 14%); } .ds-btn-lg:focus-visible { outline: 2px solid #b18aff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Underlined 600 link in Link Violet with the north-east arrow; the route out of each section.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">Open the Seer app <svg viewBox=\"0 0 14 14\" aria-hidden=\"true\"><path d=\"M3 11 11 3M5 3h6v6\"/></svg></a>",
+      "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 6px; font: 600 16px/1.6 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); color: #6c2bd9; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); transition: text-decoration-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-text-link:hover { text-decoration-color: currentColor; } .ds-text-link:focus-visible { outline: 2px solid #6c2bd9; outline-offset: 3px; } .ds-text-link svg { width: 14px; height: 14px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link-on-ink",
+      "description": "Ink header: Apps disclosure, Docs, Blog in Dusk Grey with 40px targets, and Open app on the right.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-link\" tabindex=\"0\">Apps <svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M2.5 4.5 6 8l3.5-3.5\"/></svg></span><a class=\"ds-nav-link\" href=\"#\">Docs</a><a class=\"ds-nav-link\" href=\"#\">Blog</a><a class=\"ds-nav-cta\" href=\"#\">Open app</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; min-height: 80px; padding: 0 24px; background: var(--seer-brand-ink, #141223); font: 400 15px/1.6 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); } .ds-nav-link { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border-radius: var(--seer-radius-sm, 4px); color: var(--seer-on-ink-muted, #b9b1ca); text-decoration: none; cursor: pointer; transition: color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-nav-link:hover { color: var(--seer-on-ink, #f2edff); } .ds-nav-link:focus-visible { outline: 2px solid #b18aff; outline-offset: 3px; } .ds-nav-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; } .ds-nav-cta { margin-left: auto; display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: var(--seer-radius-sm, 4px); background: var(--seer-brand-purple, #7d33ff); color: #ffffff; font: 600 14px/1.2 var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); text-decoration: none; transition: background-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-nav-cta:hover { background: var(--seer-brand-purple-hover, #6925df); }"
+    },
+    {
+      "name": "Snapshot Control",
+      "kind": "chip",
+      "refersTo": "snapshot-option",
+      "description": "Radio pills that pick a belief snapshot; each swatch is that snapshot's hill color, so the control is the legend.",
+      "html": "<fieldset class=\"ds-snap\"><legend>The market's view</legend><div class=\"ds-snap-options\"><label><input type=\"radio\" name=\"ds-snap\" checked><span><i style=\"background:#8f55f7\"></i>Now</span></label><label><input type=\"radio\" name=\"ds-snap\"><span><i style=\"background:#6a35cf\"></i>7 days ago</span></label><label><input type=\"radio\" name=\"ds-snap\"><span><i style=\"background:#50289c\"></i>30 days ago</span></label><label><input type=\"radio\" name=\"ds-snap\"><span><i style=\"background:#3b1e70\"></i>90 days ago</span></label></div></fieldset>",
+      "css": ".ds-snap { margin: 0; padding: 24px; border: 0; background: var(--seer-brand-ink, #141223); font-family: var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); } .ds-snap legend { float: left; width: 100%; margin-bottom: 10px; padding: 0; font-size: 14px; color: var(--seer-on-ink-muted, #b9b1ca); } .ds-snap-options { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 9999px; background: rgb(255 255 255 / 0.06); } .ds-snap label { position: relative; } .ds-snap input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; } .ds-snap label > span { display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 9999px; font-size: 14px; color: var(--seer-on-ink-muted, #b9b1ca); transition: background-color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color var(--seer-duration-fast, 150ms) var(--seer-ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-snap i { width: 14px; height: 4px; border-radius: 9999px; } .ds-snap label:hover > span { color: var(--seer-on-ink, #f2edff); } .ds-snap input:checked + span { background: var(--seer-brand-lavender, #bfbfe6); color: var(--seer-brand-ink, #141223); font-weight: 600; } .ds-snap input:focus-visible + span { outline: 2px solid var(--seer-brand-lavender, #bfbfe6); outline-offset: 2px; }"
+    },
+    {
+      "name": "Belief Hills",
+      "kind": "custom",
+      "refersTo": "hill-1",
+      "description": "Signature chart: one hill per answer, height equal to probability, snapshots stacked newest on top and receding toward ink.",
+      "html": "<figure class=\"ds-hills\"><svg viewBox=\"0 0 600 180\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><line class=\"ds-hills-base\" x1=\"0\" x2=\"600\" y1=\"172\" y2=\"172\"/><g class=\"ds-snap-3\"><path d=\"M9.0 172 C38.7 172 45.3 117.9 75.0 117.9 C104.7 117.9 111.3 172 141.0 172\"/><path d=\"M159.0 172 C188.7 172 195.3 67.0 225.0 67.0 C254.7 67.0 261.3 172 291.0 172\"/><path d=\"M309.0 172 C338.7 172 345.3 168.7 375.0 168.7 C404.7 168.7 411.3 172 441.0 172\"/><path d=\"M459.0 172 C488.7 172 495.3 170.4 525.0 170.4 C554.7 170.4 561.3 172 591.0 172\"/></g><g class=\"ds-snap-2\"><path d=\"M9.0 172 C38.7 172 45.3 74.3 75.0 74.3 C104.7 74.3 111.3 172 141.0 172\"/><path d=\"M159.0 172 C188.7 172 195.3 107.9 225.0 107.9 C254.7 107.9 261.3 172 291.0 172\"/><path d=\"M309.0 172 C338.7 172 345.3 171.2 375.0 171.2 C404.7 171.2 411.3 172 441.0 172\"/><path d=\"M459.0 172 C488.7 172 495.3 170.4 525.0 170.4 C554.7 170.4 561.3 172 591.0 172\"/></g><g class=\"ds-snap-1\"><path d=\"M9.0 172 C38.7 172 45.3 74.1 75.0 74.1 C104.7 74.1 111.3 172 141.0 172\"/><path d=\"M159.0 172 C188.7 172 195.3 107.7 225.0 107.7 C254.7 107.7 261.3 172 291.0 172\"/><path d=\"M309.0 172 C338.7 172 345.3 171.2 375.0 171.2 C404.7 171.2 411.3 172 441.0 172\"/><path d=\"M459.0 172 C488.7 172 495.3 170.5 525.0 170.5 C554.7 170.5 561.3 172 591.0 172\"/></g><g class=\"ds-snap-0\"><path d=\"M9.0 172 C38.7 172 45.3 63.8 75.0 63.8 C104.7 63.8 111.3 172 141.0 172\"/><path d=\"M159.0 172 C188.7 172 195.3 119.2 225.0 119.2 C254.7 119.2 261.3 172 291.0 172\"/><path d=\"M309.0 172 C338.7 172 345.3 171.2 375.0 171.2 C404.7 171.2 411.3 172 441.0 172\"/><path d=\"M459.0 172 C488.7 172 495.3 170.9 525.0 170.9 C554.7 170.9 561.3 172 591.0 172\"/></g></svg><ol class=\"ds-hills-labels\"><li><span>Yashar</span><strong>66%</strong></li><li><span>Likud</span><strong>32%</strong></li><li><span>Together Alliance</span><strong>0.5%</strong></li><li><span>Others</span><strong>0.7%</strong></li></ol></figure>",
+      "css": ".ds-hills { margin: 0; padding: 24px; background: var(--seer-brand-ink, #141223); font-family: var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); } .ds-hills svg { display: block; width: 100%; height: 160px; overflow: visible; } .ds-hills-base { stroke: var(--seer-ink-border, #39314a); stroke-width: 1px; vector-effect: non-scaling-stroke; } .ds-hills path { fill: none; stroke-width: 9px; stroke-linecap: round; vector-effect: non-scaling-stroke; } .ds-snap-0 path { stroke: var(--seer-brand-purple-on-ink, #8f55f7); } .ds-snap-1 path { stroke: #6a35cf; } .ds-snap-2 path { stroke: #50289c; } .ds-snap-3 path { stroke: #3b1e70; } .ds-hills-labels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 14px 0 0; padding: 0; list-style: none; } .ds-hills-labels li { display: grid; gap: 2px; text-align: center; } .ds-hills-labels span { font-size: 14px; line-height: 1.35; color: var(--seer-on-ink-muted, #b9b1ca); } .ds-hills-labels strong { font-size: 24px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--seer-brand-lavender, #bfbfe6); }"
+    },
+    {
+      "name": "Read Guide Rows",
+      "kind": "custom",
+      "refersTo": "body-lg",
+      "description": "Hairline-ruled rows of term and answer, ending on the then-and-now figure; peers are ruled, never boxed.",
+      "html": "<dl class=\"ds-rows\"><div><dt>What is being priced</dt><dd>Each answer is a token that pays out one unit of collateral if it turns out right, so its price is the chance the market gives that answer.</dd></div><div><dt>How to use the signal</dt><dd>Watch it move. That shift is information you can act on without ever placing a trade.</dd><p class=\"ds-shift\"><span class=\"ds-then\">33%</span><svg viewBox=\"0 0 40 16\" aria-hidden=\"true\"><path d=\"M2 8h34M30 2l6 6-6 6\"/></svg><span class=\"ds-now\">66%</span></p></div></dl>",
+      "css": ".ds-rows { margin: 0; padding: 0 24px; background: var(--seer-page, #f7f7f9); font-family: var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); color: var(--seer-text, #17171c); } .ds-rows > div { display: grid; gap: 10px; padding-block: 28px; border-top: 1px solid var(--seer-border, #e2e2e9); } .ds-rows > div:last-child { border-bottom: 1px solid var(--seer-border, #e2e2e9); } .ds-rows dt { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem); font-weight: 600; letter-spacing: -0.01em; } .ds-rows dd { margin: 0; max-width: 60ch; font-size: 1.0625rem; line-height: 1.6; color: var(--seer-muted, #5c5c66); } .ds-shift { display: flex; align-items: baseline; gap: 16px; margin: 12px 0 0; font-size: clamp(2.5rem, 1.6rem + 3vw, 4rem); font-weight: 600; line-height: 1; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; } .ds-then { color: var(--seer-muted, #5c5c66); } .ds-now { color: var(--seer-brand-purple, #7d33ff); } .ds-shift svg { width: 40px; align-self: center; fill: none; stroke: var(--seer-muted, #5c5c66); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Data Panel with Ranked Bars",
+      "kind": "card",
+      "refersTo": "data-panel",
+      "description": "Cool Paper panel on the white Ecosystem ground holding one application's data: note, then bars scaled to the largest value.",
+      "html": "<div class=\"ds-panel\"><p class=\"ds-panel-note\">Chance of default within a year, highest first:</p><ol class=\"ds-bars\"><li><span>USDF</span><span class=\"ds-track\"><span style=\"width:100.0%\"></span></span><strong>16%</strong></li><li><span>avETH</span><span class=\"ds-track\"><span style=\"width:81.3%\"></span></span><strong>13%</strong></li><li><span>avUSD</span><span class=\"ds-track\"><span style=\"width:60.6%\"></span></span><strong>9.7%</strong></li><li><span>NUSD</span><span class=\"ds-track\"><span style=\"width:44.4%\"></span></span><strong>7.1%</strong></li></ol></div>",
+      "css": ".ds-panel { padding: clamp(20px, 2.5vw, 32px); border-radius: var(--seer-radius-md, 10px); background: var(--seer-page, #f7f7f9); color: var(--seer-text, #17171c); font-family: var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); } .ds-panel-note { margin: 0 0 16px; font-size: 14px; color: var(--seer-muted, #5c5c66); } .ds-bars { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; } .ds-bars li { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 4.5rem; align-items: center; gap: 16px; min-height: 36px; font-size: 14px; } .ds-track { display: block; height: 6px; border-radius: 9999px; background: var(--seer-surface-raised, #f1f1f4); } .ds-track span { display: block; min-width: 6px; height: 100%; border-radius: inherit; background: var(--seer-brand-purple, #7d33ff); } .ds-bars strong { font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Convergence Band",
+      "kind": "custom",
+      "refersTo": "brand-purple",
+      "description": "The kit's convergencePaths() motif: seven ink wedges meeting at one point on the right of the purple field.",
+      "html": "<div class=\"ds-converge\"><svg viewBox=\"0 0 1440 360\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M0 6 L1040 180 L0 34 Z\"/><path d=\"M0 56 L1040 180 L0 84 Z\"/><path d=\"M0 106 L1040 180 L0 134 Z\"/><path d=\"M0 156 L1040 180 L0 184 Z\"/><path d=\"M0 206 L1040 180 L0 234 Z\"/><path d=\"M0 256 L1040 180 L0 284 Z\"/><path d=\"M0 306 L1040 180 L0 334 Z\"/></svg><span style=\"left:72.2%\">One price per answer</span></div>",
+      "css": ".ds-converge { position: relative; height: 200px; background: var(--seer-brand-purple, #7d33ff); overflow: hidden; font-family: var(--seer-font-sans, 'Open Sans Variable', 'Open Sans', ui-sans-serif, system-ui, sans-serif); } .ds-converge svg { display: block; width: 100%; height: 100%; fill: var(--seer-brand-ink, #141223); } .ds-converge span { position: absolute; top: 50%; padding-left: 16px; transform: translateY(-50%); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; color: var(--seer-brand-white, #ffffff); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Live Poster",
+    "overview": "The homepage takes the Electric Foundation posters (ink and purple fields at page scale, lavender display type, stacked curves, converging lines) and draws their motifs from live market data. The first viewport is an ink field where a real question's answers stand as hills, one per answer, stacked across the last 90 days. Between the fields, light sections carry the reading: hairline-ruled rows on a 5/7 split, set in Open Sans at two weights.\n\nDensity is calm. Each section makes one point, sections breathe at 72 to 144px of padding, and running text holds to 40 to 60 characters. Every graphic is either market data or a brand motif; the page has no photography, illustration, gradient wash or grid of feature cards. It refuses the category default of a hero claim over feature cards and leads with a live market's belief instead, and each application in the ecosystem is shown through the shape of its own data.\n\n**Who owns what.** Color, radius, font, motion, the button, the brand lockup, the footer icons, the ecosystem footer and the line-motif generator `convergencePaths()` belong to `@seer-pm/ui-kit` (`packages/seer-pm-ui-kit` in the seer-pm monorepo, consumed here as version 0.1.0 through `--seer-*` custom properties and the kit's classes). The frontmatter mirrors those values so tools can read them; if the two disagree, the kit is right and this file is stale. Shared values change in the kit, never in this site. What this site owns: the type scale, the layout tokens, the receding hill colors and the components described below.\n\n**Departures from the Electric Foundation brand kit**, all deliberate:\n\n- Open Sans replaces PP Neue Montreal and Suisse Intl Mono, so the landing and the apps read as one system (user decision).\n- The stacked-curve motif is drawn from live market data: one hill per answer, its height the probability the market gives that answer.\n- The line motif converges toward the right, as the rebrand brief requires. The kit's generator has no option to mirror it.",
+    "keyCharacteristics": [
+      "Full-bleed color fields (ink, page, white, purple, ink) mark the sections; no borders or gaps between them.",
+      "Lavender is the display voice on ink; Electric Purple is the action and the current market value on light grounds.",
+      "One family, two weights (400 and 600), tracking that tightens as size grows, tabular figures for every number.",
+      "Flat surfaces: depth comes from field contrast and one tonal step for panels.",
+      "Peer items sit in hairline-ruled rows, not cards.",
+      "Charts are real data with plain-language captions and a hidden table; diagrams carry no numbers."
+    ],
+    "rules": [
+      {
+        "name": "The Fixed Field Rule",
+        "body": "Ink and purple fields keep their color in both themes. An ink field sets `data-theme=\"dark\"` so kit controls inside it take the dark accents, and a light overlay opened from it (the Apps menu) sets `data-theme=\"light\"`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lavender Voice Rule",
+        "body": "On ink, display type, value figures and the selected state are lavender; reading text is Lilac White or Dusk Grey. Lavender never appears on a light ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Purple Is the Market Rule",
+        "body": "On light grounds, Electric Purple fills only the primary action and the marks that stand for a market. Past values and supporting text stay Slate.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Weights Rule",
+        "body": "400 for reading, 600 for anything that names or quantifies. No other weight ships.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figure Rule",
+        "body": "Every probability, price, date, count and address is set with tabular numerals (`.numeric`), so figures align and do not jitter between snapshots.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tightening Rule",
+        "body": "Tracking scales with size: -0.035em at display and the large figure, -0.03em at headlines, -0.02em at figures, -0.01em at titles and the hero question, 0 at body. Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.",
+        "section": "typography"
+      },
+      {
+        "name": "The 5/7 Rule",
+        "body": "A light section splits into a 5fr heading column and a 7fr content column (Read, the Ecosystem head and every application row, Builders), and stacks at 900px.",
+        "section": "layout"
+      },
+      {
+        "name": "The Full-Bleed Field Rule",
+        "body": "A section is a full-width field of one color. The change of field is the section boundary; no divider, gap or rounded band sits between sections.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Field Rule",
+        "body": "Surfaces are flat at rest and on hover. A shadow marks only an overlay that sits above the page.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Field Rule",
+        "body": "Radius belongs to things inside a field, never to the field.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Soft Shoulder Rule",
+        "body": "Every hill returns to the baseline between columns. Unordered answers never join into one continuous curve, because a line would claim an order the answers do not have.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Ruled Row Rule",
+        "body": "Peers are separated by hairlines, not boxed. A panel wraps a whole visualization or list, never a single item.",
+        "section": "components"
+      },
+      {
+        "name": "The Own Shape Rule",
+        "body": "Each application is shown through the shape of its own data: a ledger of live markets for the Seer app, a long-tail hill line for Deep, the pass/fail fork and real proposals for Futarchy, ranked bars for Opportunity Markets and Risk Pricing. A new application gets a new shape, not a shared card.",
+        "section": "components"
+      },
+      {
+        "name": "The Control Is the Key Rule",
+        "body": "A chart with selectable series keys them through its own control. The swatch in each option is the series' stroke color, and no separate legend is drawn.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** take every shared color, radius, font and motion value from `@seer-pm/ui-kit` (`var(--seer-*)`), and change shared values in the kit's package in the seer-pm monorepo, not in this site.",
+      "**Do** draw the stacked-curve motif from data: one hill per answer, height equal to probability, back to the baseline between columns.",
+      "**Do** draw the line motif with `convergencePaths()`, converging toward the right.",
+      "**Do** set `data-theme=\"dark\"` on every ink field and `data-theme=\"light\"` on a light overlay opened from one.",
+      "**Do** set every number with tabular figures at weight 600.",
+      "**Do** give every chart a plain-language caption and a visually hidden table of its values.",
+      "**Do** keep standalone controls at least 40px tall (buttons, header nav links, footer icons).",
+      "**Do** move state changes over 150ms on the kit's ease-out (`cubic-bezier(0.16, 1, 0.3, 1)`), keep one authored motion moment per page, and honor reduced motion."
+    ],
+    "donts": [
+      "**Don't** use PP Neue Montreal, Suisse Intl Mono or a second display family. Open Sans is the only typeface; the system monospace is for literal code strings only.",
+      "**Don't** join hills into one continuous curve across answers, or mirror the convergence motif so it opens to the right.",
+      "**Don't** put lavender on a light ground, or Electric Purple on reading text.",
+      "**Don't** use the receding hill colors for a mark that must be read on its own; at 1.9:1 and 1.4:1 against ink they work only behind the snapshot control.",
+      "**Don't** put numbers on a mechanism diagram. The Futarchy fork carries labels only, and every figure on the page comes from build-time market data.",
+      "**Don't** box list items as cards or add shadows to surfaces at rest.",
+      "**Don't** add literal radii or round a full-bleed field; use 4px, 10px or a full pill.",
+      "**Don't** put a small label above a section heading; sections open on the heading itself."
+    ]
+  }
+}

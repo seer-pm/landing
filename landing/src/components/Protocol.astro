@@ -1,0 +1,122 @@
+---
+import { convergencePaths } from "@seer-pm/ui-kit";
+
+// Seven wedges from the left edge meeting at one point inside the frame: many positions, one price.
+const FOCUS: [number, number] = [1040, 180];
+const wedges = convergencePaths({ start: 6, pitch: 50, wedge: 28, focus: FOCUS });
+
+const facts = [
+  ["Market types", "Categorical, multi-categorical, scalar, multi-scalar and conditional."],
+  ["Outcome tokens", "Conditional Tokens (ERC1155), wrapped as ERC20 so any DeFi protocol can hold them."],
+  ["Resolution", "Reality.eth answers each question, and Kleros arbitrates when an answer is disputed."],
+  ["Networks", "Gnosis, Ethereum, Optimism and Base."],
+];
+---
+
+<section class="field-purple protocol" aria-labelledby="protocol-title">
+  <div class="container protocol-grid">
+    <div>
+      <h2 id="protocol-title" class="h2">One protocol underneath.</h2>
+      <p class="lead protocol-lead">
+        Every app on this page creates and trades markets on the same open contracts. Many positions go in; one price per
+        answer comes out.
+      </p>
+    </div>
+    <dl class="facts">
+      {
+        facts.map(([term, detail]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{detail}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+  <div class="protocol-band" aria-hidden="true">
+    <svg viewBox="0 0 1440 360" preserveAspectRatio="none" focusable="false">
+      {wedges.map((d) => <path d={d} />)}
+    </svg>
+    <span class="protocol-point" style={`left: ${(FOCUS[0] / 1440) * 100}%`}>One price per answer</span>
+  </div>
+</section>
+
+<style>
+  .protocol {
+    padding-top: var(--section-block);
+    overflow: hidden;
+  }
+  .protocol-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  h2 {
+    max-width: 11ch;
+    color: var(--seer-brand-white);
+  }
+  .protocol-lead {
+    max-width: 40ch;
+    margin-top: 24px;
+  }
+  .facts {
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: var(--seer-radius-md);
+    background: var(--seer-brand-ink);
+    color: var(--seer-on-ink);
+  }
+  .facts div {
+    padding-block: 16px;
+    border-top: 1px solid var(--seer-ink-border);
+  }
+  .facts div:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .facts div:last-child {
+    padding-bottom: 0;
+  }
+  dt {
+    font-weight: 600;
+    color: var(--seer-brand-lavender);
+  }
+  dd {
+    margin-top: 4px;
+    color: var(--seer-on-ink-muted);
+  }
+
+  /* The motif owns a full-bleed band at the foot of the field, as on the posters, and nothing
+     covers the point where the wedges meet. */
+  .protocol-band {
+    position: relative;
+    margin-top: clamp(56px, 7vw, 96px);
+    height: clamp(170px, 24vw, 340px);
+  }
+  .protocol-band svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--seer-brand-ink);
+  }
+  .protocol-point {
+    position: absolute;
+    top: 50%;
+    padding-left: 20px;
+    transform: translateY(-50%);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--seer-brand-white);
+  }
+  @media (max-width: 900px) {
+    .protocol-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 720px) {
+    .protocol-point {
+      display: none;
+    }
+  }
+</style>

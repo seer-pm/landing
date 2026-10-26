@@ -1,0 +1,233 @@
+---
+import { percent } from "../lib/format.mjs";
+import { hillPaths } from "../lib/hills.mjs";
+
+interface Snapshot {
+  label: string;
+  probabilities: (number | null)[];
+}
+
+interface Props {
+  outcomes: string[];
+  /** Newest first. The first snapshot is drawn on top and labelled by default. */
+  snapshots: Snapshot[];
+  /** Plain-language description of what the chart shows, read before the data table. */
+  caption: string;
+  /** Hero size with stacked snapshots; compact draws the newest snapshot only. */
+  variant?: "hero" | "compact";
+  /** Per-answer labels under each hill. Off for long tails, where the shape is the message. */
+  labels?: boolean;
+  /**
+   * "probability" puts 100% at the top of the frame. "leader" stretches the tallest hill to the
+   * top, for long tails where every answer is a few percent and the shape is what matters.
+   */
+  scale?: "probability" | "leader";
+}
+
+const { outcomes, snapshots, caption, variant = "hero", labels = true, scale = "probability" } = Astro.props;
+const WIDTH = 1200;
+const HEIGHT = variant === "hero" ? 360 : 240;
+const drawn = (variant === "hero" ? snapshots : snapshots.slice(0, 1)).filter((snapshot) =>
+  snapshot.probabilities.some((value) => value !== null),
+);
+const top =
+  scale === "leader" ? Math.max(...drawn.flatMap((snapshot) => snapshot.probabilities.map((value) => value ?? 0)), 0.0001) : 1;
+const paths = drawn.map((snapshot) =>
+  hillPaths(
+    snapshot.probabilities.map((value) => (value === null ? null : value / top)),
+    { width: WIDTH, height: HEIGHT },
+  ),
+);
+---
+
+<figure class:list={["hills", `hills-${variant}`]} style={`--columns: ${outcomes.length}`}>
+  <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <line class="hills-base" x1="0" x2={WIDTH} y1={HEIGHT - 8} y2={HEIGHT - 8}></line>
+    {
+      paths
+        .map((group, index) => (
+          <g class="hills-snap" data-snap={index}>
+            {group.map((d) => d && <path d={d} />)}
+          </g>
+        ))
+        .reverse()
+    }
+  </svg>
+  {
+    labels && (
+      <ol class="hills-labels">
+        {outcomes.map((name, column) => (
+          <li>
+            <span class="hills-name">{name}</span>
+            {drawn.map((snapshot, index) => {
+              const value = snapshot.probabilities[column];
+              return (
+                <span class="hills-value numeric" data-snap={index}>
+                  {value === null ? "n/a" : percent(value)}
+                </span>
+              );
+            })}
+          </li>
+        ))}
+      </ol>
+    )
+  }
+  <figcaption class="visually-hidden">{caption}</figcaption>
+  <div class="visually-hidden">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Answer</th>
+          {drawn.map((snapshot) => <th scope="col">{snapshot.label}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          outcomes.map((name, column) => (
+            <tr>
+              <th scope="row">{name}</th>
+              {drawn.map((snapshot) => {
+                const value = snapshot.probabilities[column];
+                return <td>{value === null ? "no price yet" : percent(value)}</td>;
+              })}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</figure>
+
+<style>
+  .hills {
+    position: relative;
+  }
+  svg {
+    width: 100%;
+    height: clamp(150px, 20vw, 290px);
+    overflow: visible;
+  }
+  .hills-compact svg {
+    height: clamp(110px, 14vw, 160px);
+  }
+  .hills-base {
+    stroke: var(--hills-base, var(--seer-ink-border));
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+  }
+  .hills-snap path {
+    fill: none;
+    stroke-width: 9px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    transition:
+      stroke var(--seer-duration-fast) var(--seer-ease-out),
+      opacity var(--seer-duration-fast) var(--seer-ease-out);
+  }
+  .hills-snap[data-snap="0"] path {
+    stroke: var(--hill-0);
+  }
+  .hills-snap[data-snap="1"] path {
+    stroke: var(--hill-1);
+  }
+  .hills-snap[data-snap="2"] path {
+    stroke: var(--hill-2);
+  }
+  .hills-snap[data-snap="3"] path {
+    stroke: var(--hill-3);
+  }
+  .hills-compact .hills-snap path {
+    stroke-width: 2px;
+    stroke: var(--seer-brand-purple);
+  }
+
+  /* A SnapshotControl anywhere inside the same .hills-scope picks the snapshot: it turns lavender
+     and the others recede. Pure CSS, so the control works without JS. */
+  :global(.hills-scope:has(input[value="1"]:checked, input[value="2"]:checked, input[value="3"]:checked))
+    .hills-snap
+    path {
+    opacity: 0.3;
+  }
+  :global(.hills-scope:has(input[value="1"]:checked)) .hills-snap[data-snap="1"] path,
+  :global(.hills-scope:has(input[value="2"]:checked)) .hills-snap[data-snap="2"] path,
+  :global(.hills-scope:has(input[value="3"]:checked)) .hills-snap[data-snap="3"] path {
+    stroke: var(--seer-brand-lavender);
+    opacity: 1;
+  }
+
+  .hills-labels {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    margin-top: 14px;
+    padding: 0;
+    list-style: none;
+  }
+  .hills-labels li {
+    display: grid;
+    align-content: start;
+    gap: 2px;
+    padding-inline: 0.6%;
+    text-align: center;
+  }
+  .hills-name {
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--seer-on-ink-muted);
+    overflow-wrap: anywhere;
+  }
+  .hills-value {
+    display: none;
+    font-size: clamp(1.25rem, 0.9rem + 1.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--seer-brand-lavender);
+  }
+  .hills-value[data-snap="0"] {
+    display: block;
+  }
+  :global(.hills-scope:has(input[value="1"]:checked, input[value="2"]:checked, input[value="3"]:checked))
+    .hills-value[data-snap="0"] {
+    display: none;
+  }
+  :global(.hills-scope:has(input[value="1"]:checked)) .hills-value[data-snap="1"],
+  :global(.hills-scope:has(input[value="2"]:checked)) .hills-value[data-snap="2"],
+  :global(.hills-scope:has(input[value="3"]:checked)) .hills-value[data-snap="3"] {
+    display: block;
+  }
+
+  /* One authored moment: the market's past views sweep in from the left, oldest first, and the
+     current view lands last. A clip-path wipe, because dash offsets ignore pathLength once the
+     stroke is non-scaling. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hills-hero .hills-snap {
+      animation: hill-wipe 1100ms var(--seer-ease-out) backwards;
+    }
+    .hills-hero .hills-snap[data-snap="2"] {
+      animation-delay: 120ms;
+    }
+    .hills-hero .hills-snap[data-snap="1"] {
+      animation-delay: 240ms;
+    }
+    .hills-hero .hills-snap[data-snap="0"] {
+      animation-delay: 360ms;
+    }
+  }
+  @keyframes hill-wipe {
+    from {
+      clip-path: inset(-20px 100% -20px 0);
+    }
+    to {
+      clip-path: inset(-20px 0 -20px 0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hills-name {
+      font-size: 12px;
+    }
+    .hills-snap path {
+      stroke-width: 5px;
+    }
+  }
+</style>

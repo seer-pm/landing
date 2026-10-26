@@ -1,0 +1,393 @@
+---
+import { type SeerAppId, seerApps } from "@seer-pm/ui-kit";
+import type { LandingData } from "../lib/types";
+import { count, day, month, percent } from "../lib/format.mjs";
+import BeliefHills from "./BeliefHills.astro";
+import RankedBars from "./RankedBars.astro";
+
+interface Props {
+  data: LandingData;
+}
+
+const { data } = Astro.props;
+
+/** Who brings each kind of question, in the asker's terms rather than the trader's. */
+const askers: Record<SeerAppId, string> = {
+  app: "Anyone with a question, and the traders who answer it.",
+  deep: "Funding teams facing a large field of proposals, and the AI agents that forecast it.",
+  futarchy: "DAOs weighing a proposal before they vote on it.",
+  opportunity: "Reviewers choosing among submissions. They keep the final say.",
+  risk: "Anyone assessing exposure to a DeFi protocol.",
+};
+
+const cta: Record<SeerAppId, string> = {
+  app: "Open the Seer app",
+  deep: "Open Deep",
+  futarchy: "Open Futarchy",
+  opportunity: "Open Opportunity Markets",
+  risk: "Open Risk Pricing",
+};
+
+const many = data.manyOutcomes;
+const leaders = many?.outcomes.slice(0, 3) ?? [];
+---
+
+<section class="section ecosystem" aria-labelledby="ecosystem-title">
+  <div class="container">
+    <div class="ecosystem-head">
+      <h2 id="ecosystem-title" class="h2">One protocol, five ways to ask.</h2>
+      <p class="lead">Each app is built around a different kind of question. Start from yours.</p>
+    </div>
+
+    {
+      seerApps.map((app) => (
+        <article class="app-row" aria-labelledby={`app-${app.id}`}>
+          <div class="app-copy">
+            <h3 id={`app-${app.id}`}>{app.name}</h3>
+            <p class="app-summary">{app.summary}</p>
+            <p class="app-asker">
+              <span>Who asks</span>
+              {askers[app.id]}
+            </p>
+            <a class="text-link" href={app.url}>
+              {cta[app.id]}
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M3 11 11 3M5 3h6v6" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="app-visual">
+            {app.id === "app" && (
+              <>
+                <p class="visual-note numeric">
+                  {count(data.openMarkets)} open markets on {day(data.generatedAt)}. A few of them:
+                </p>
+                <ul class="ledger">
+                  {data.ledger.map((row) => (
+                    <li>
+                      <a href={row.url}>{row.question}</a>
+                      <span class="ledger-odds numeric">
+                        <strong>{percent(row.leading.probability)}</strong>
+                        <span>{row.leading.name}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {app.id === "deep" &&
+              (many ? (
+                <>
+                  <p class="visual-note">
+                    Example on Seer: <a href={many.url}>{many.question}</a>
+                  </p>
+                  <BeliefHills
+                    variant="compact"
+                    labels={false}
+                    scale="leader"
+                    outcomes={many.outcomes.map((outcome) => outcome.name)}
+                    snapshots={[{ label: "Now", probabilities: many.outcomes.map((outcome) => outcome.probability) }]}
+                    caption={`${many.outcomes.length} possible answers, ranked by the chance the market gives each.`}
+                  />
+                  <p class="visual-foot numeric">
+                    {many.outcomes.length} possible answers, ranked. The leaders:{" "}
+                    {leaders.map((outcome) => `${outcome.name} ${percent(outcome.probability)}`).join(", ")}.
+                  </p>
+                </>
+              ) : (
+                <p class="visual-note">Questions with dozens of possible answers, priced together.</p>
+              ))}
+
+            {app.id === "futarchy" && (
+              <>
+                <figure class="fork">
+                  <svg viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M8 60H200C270 60 290 14 360 14H592" />
+                    <path d="M200 60C270 60 290 106 360 106H592" />
+                    <path class="fork-gap" d="M560 22V98" />
+                  </svg>
+                  <span class="fork-label fork-proposal">A proposal</span>
+                  <span class="fork-label fork-pass">Token price if it passes</span>
+                  <span class="fork-label fork-fail">Token price if it fails</span>
+                  <figcaption>
+                    One proposal, two markets on the DAO's token. The gap between the two prices is the signal; Futarchy
+                    shows both for every live proposal.
+                  </figcaption>
+                </figure>
+                <p class="visual-note">Recent proposals put to a market before the vote:</p>
+                <ol class="proposals">
+                  {data.proposals.map((proposal) => (
+                    <li>
+                      <span class="proposal-dao">{proposal.dao}</span>
+                      <a href={proposal.url}>
+                        <span class="proposal-code numeric">{proposal.code}</span> {proposal.title}
+                      </a>
+                      <span class="proposal-date numeric">{month(proposal.opensAt)}</span>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
+
+            {app.id === "opportunity" &&
+              (data.selection ? (
+                <>
+                  <p class="visual-note">
+                    Example on Seer: <a href={data.selection.url}>{data.selection.question}</a>
+                  </p>
+                  <RankedBars
+                    items={data.selection.outcomes.slice(0, 6)}
+                    label="Chance each submission is selected, highest first"
+                  />
+                </>
+              ) : (
+                <p class="visual-note">The chance each submission is selected, ranked for the reviewers.</p>
+              ))}
+
+            {app.id === "risk" &&
+              (data.risk ? (
+                <>
+                  <p class="visual-note">Chance of default within a year, highest first:</p>
+                  <RankedBars
+                    items={data.risk.assets.slice(0, 6)}
+                    label="Chance of default within a year, by asset"
+                  />
+                  <p class="visual-foot numeric">
+                    Chance that none of the {data.risk.assets.length} listed assets defaults within a year:{" "}
+                    <strong>{percent(data.risk.noDefault)}</strong>. Source: risk.seer.pm, {day(data.risk.updatedAt)}.
+                  </p>
+                </>
+              ) : (
+                <p class="visual-note">Default risk across protocols, compared on one scale.</p>
+              ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .ecosystem {
+    background: var(--seer-surface);
+    color: var(--seer-text);
+  }
+  .ecosystem-head {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(24px, 6vw, 96px);
+    align-items: end;
+    margin-bottom: clamp(40px, 6vw, 80px);
+  }
+  .ecosystem-head .lead {
+    color: var(--seer-muted);
+    max-width: 44ch;
+  }
+  .app-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(24px, 6vw, 96px);
+    padding-block: clamp(32px, 4vw, 56px);
+    border-top: 1px solid var(--seer-border);
+  }
+  h3 {
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .app-summary {
+    margin-top: 12px;
+    font-size: 1.0625rem;
+    max-width: 40ch;
+  }
+  .app-asker {
+    margin-top: 16px;
+    max-width: 40ch;
+    color: var(--seer-muted);
+  }
+  .app-asker span {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--seer-text);
+  }
+  .app-copy .text-link {
+    margin-top: 20px;
+  }
+  .text-link svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .app-visual {
+    min-width: 0;
+    padding: clamp(20px, 2.5vw, 32px);
+    border-radius: var(--seer-radius-md);
+    background: var(--seer-page);
+    --hills-base: var(--seer-border);
+  }
+  .visual-note {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--seer-muted);
+  }
+  .visual-note a,
+  .ledger a,
+  .proposals a {
+    color: var(--seer-text);
+    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+    text-underline-offset: 3px;
+  }
+  .visual-note a:hover,
+  .ledger a:hover,
+  .proposals a:hover {
+    text-decoration-color: currentColor;
+  }
+  .visual-foot {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--seer-muted);
+  }
+  .visual-foot strong {
+    color: var(--seer-text);
+  }
+
+  /* Futarchy's own shape: the fork a proposal opens. A diagram of the mechanism, so it carries no
+     numbers; the proposal list below it is the real data. */
+  .fork {
+    position: relative;
+    margin: 0 0 28px;
+    padding-top: 26px;
+  }
+  .fork svg {
+    width: 100%;
+    height: 120px;
+  }
+  .fork path {
+    fill: none;
+    stroke: var(--seer-brand-purple);
+    stroke-width: 4px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .fork .fork-gap {
+    stroke: var(--seer-muted);
+    stroke-width: 1.5px;
+    stroke-dasharray: 3 4;
+  }
+  .fork-label {
+    position: absolute;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--seer-muted);
+  }
+  .fork-proposal {
+    left: 0;
+    top: calc(26px + 60px + 10px);
+  }
+  .fork-pass {
+    right: 0;
+    top: 0;
+    font-weight: 600;
+    color: var(--seer-text);
+  }
+  .fork-fail {
+    right: 0;
+    top: calc(26px + 106px + 8px);
+    font-weight: 600;
+    color: var(--seer-text);
+  }
+  .fork figcaption {
+    margin-top: 36px;
+    font-size: 14px;
+    color: var(--seer-muted);
+  }
+
+  .ledger,
+  .proposals {
+    padding: 0;
+    list-style: none;
+  }
+  .ledger li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: center;
+    padding-block: 12px;
+    border-top: 1px solid var(--seer-border);
+  }
+  .ledger li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .ledger a {
+    font-weight: 600;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .ledger-odds {
+    display: grid;
+    justify-items: end;
+    min-width: 5rem;
+  }
+  .ledger-odds strong {
+    font-size: 1.375rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--seer-brand-purple);
+  }
+  .ledger-odds span {
+    max-width: 9rem;
+    font-size: 13px;
+    color: var(--seer-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .proposals li {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: baseline;
+    padding-block: 12px;
+    border-top: 1px solid var(--seer-border);
+  }
+  .proposals li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .proposal-dao {
+    font-size: 13px;
+    color: var(--seer-muted);
+  }
+  .proposal-code {
+    font-weight: 600;
+  }
+  .proposal-date {
+    font-size: 13px;
+    color: var(--seer-muted);
+    white-space: nowrap;
+  }
+  @media (max-width: 900px) {
+    .ecosystem-head,
+    .app-row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .proposals li {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .proposals a {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+</style>
